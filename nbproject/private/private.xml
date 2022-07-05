@@ -5,6 +5,11 @@
         <group>
 <<<<<<< HEAD
             <file>file:/D:/JavaSwing/Project%20Company%20Management/src/project/company/management/dang_nhap.java</file>
+            <file>file:/D:/JavaSwing/Project%20Company%20Management/src/project/company/management/them_can_bo.java</file>
+            <file>file:/D:/JavaSwing/Project%20Company%20Management/src/project/company/management/Database.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/D:/JavaSwing/Project%20Company%20Management/src/project/company/management/dang_nhap.java</file>
 =======
             <file>file:/Users/thinkpro/Desktop/BTL-Java/Project-Company-Management/src/project/company/management/view/ThemCB.java</file>
             <file>file:/Users/thinkpro/Desktop/BTL-Java/Project-Company-Management/src/project/company/management/view/Home.java</file>
@@ -18,6 +23,7 @@
             <file>file:/Users/thinkpro/Desktop/BTL-Java/Project-Company-Management/src/project/company/management/bean/DanhMucBean.java</file>
             <file>file:/Users/thinkpro/Desktop/BTL-Java/Project-Company-Management/src/project/company/management/view/TimKiemCB.java</file>
 >>>>>>> 82a01bf4a0ea8eee635d79514fd8bf80cc336c63
+>>>>>>> master
         </group>
     </open-files>
 </project-private>
