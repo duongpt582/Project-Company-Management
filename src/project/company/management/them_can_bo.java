@@ -28,6 +28,9 @@ public class them_can_bo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        utilCalendarModel1 = new org.jdatepicker.impl.UtilCalendarModel();
+        dateComponentFormatter1 = new org.jdatepicker.impl.DateComponentFormatter();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -80,5 +83,7 @@ public class them_can_bo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private org.jdatepicker.impl.DateComponentFormatter dateComponentFormatter1;
+    private org.jdatepicker.impl.UtilCalendarModel utilCalendarModel1;
     // End of variables declaration//GEN-END:variables
 }
