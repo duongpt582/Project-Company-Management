@@ -1,8 +1,5 @@
 package project.company.management;
-<<<<<<< HEAD
 
-=======
->>>>>>> master
 import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -98,18 +95,18 @@ public class Customer implements Serializable {
 
         String fullDate = myDateObj.format(myFormatObj3);
 
-<<<<<<< HEAD
+
         ID = year + ten.substring(0,2).toUpperCase() + (them_can_bo.customer_count + 101);
-=======
+
 //        ID = year + ten.substring(0,2).toUpperCase() + Integer.toString( them_can_bo.customer_count+101);
->>>>>>> master
+
         System.out.println("Your Account ID: "+ ID);
         System.out.println("Account created on: "+fullDate);
 
         dateCreated = fullDate;
 
         File objectFile = new File("src/user/"+ID);
-<<<<<<< HEAD
+
         FileOutputStream fileOutput = new FileOutputStream(objectFile);
         ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
 
@@ -118,15 +115,6 @@ public class Customer implements Serializable {
 
 
         fileOutput.close();
-=======
-        ObjectOutputStream objectOutput;
-        try (FileOutputStream fileOutput = new FileOutputStream(objectFile)) {
-            objectOutput = new ObjectOutputStream(fileOutput);
-            objectOutput.writeObject(this);
-            System.out.println("ID: "+this.ID); //Test this
-        }
->>>>>>> master
-        objectOutput.close();
     }
 
     String doiTen(String ten){
@@ -138,7 +126,7 @@ public class Customer implements Serializable {
     String doiDonVi(String donvi){
         return donvi;
     }
-<<<<<<< HEAD
+
     double doiSoNgayLamViec_giamDoc(int soNgay){
         return (double) soNgay*1000000;
     }
@@ -152,17 +140,5 @@ public class Customer implements Serializable {
 
 }
 
-=======
-    public double doiSoNgayLamViec_giamDoc(int soNgay){
-        return (double) soNgay*1000000;
-    }
-    public double doiSoNgayLamViec_truongPhong(int soNgay){
-        return (double) soNgay*500000;
-    }
-   public double doiSoNgayLamViec_nhanVien(int soNgay){
-        return (double) soNgay*200000;
-    }
-    
 
-}
->>>>>>> master
+

@@ -8,8 +8,8 @@ import java.awt.event.MouseListener;
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.plaf.RootPaneUI;
 import project.company.management.bean.DanhMucBean;
+import project.company.management.dang_nhap3;
 import project.company.management.view.Checkin;
 import project.company.management.view.Home;
 import project.company.management.view.SuaCB;
@@ -36,10 +36,10 @@ public class ChuyenManHinhController {
        kindSelected ="Menu" ;
        jpnItem.setBackground(new Color(255, 255, 255));
        jlbItem.setBackground(new Color(255, 255, 255));
-       
+      
        root.removeAll();
        root.setLayout(new BorderLayout());
-       root.add(new Home());
+       root.add(new dang_nhap3());
        root.validate();
        root.repaint();
    }
@@ -69,14 +69,11 @@ public class ChuyenManHinhController {
             this.jlbItem = jlbItem;
         }
        
-       
-       
-
        @Override
         public void mouseClicked(MouseEvent e) {
             switch (kind) {
-                case "Home":
-                    node = new Home();
+                case "dang_nhap3":
+                    node = new dang_nhap3();
                     break;
                 case "ThemCanBo":
                     node = new ThemCB();
