@@ -19,14 +19,14 @@ public class Database {
             
             try {
                 
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sinhvien", "root", "");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_company", "root", "");
                 System.out.println("Database Connection Success");
                 
                 Statement statement = con.createStatement();
-                ResultSet rs = statement.executeQuery("SELECT * FROM student");
+                ResultSet rs = statement.executeQuery("SELECT * FROM can_bo");
 
                 while (rs.next()) {
-                    String name = rs.getString("hoten");
+                    String name = rs.getString("ho_ten");
                     System.out.println(name);
                 }
                 
