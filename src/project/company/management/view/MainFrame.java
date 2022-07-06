@@ -32,13 +32,12 @@ public class MainFrame extends javax.swing.JFrame {
         
         
         List<DanhMucBean> listItem = new ArrayList<>();
-        listItem.add(new DanhMucBean("Home", jpnHome, jlbHome));
+        listItem.add(new DanhMucBean("dang_nhap3", jpnHome, jlbHome));
         listItem.add(new DanhMucBean("ThemCanBo", jpnThem, jlbThem));
         listItem.add(new DanhMucBean("SuaCanBo", jpnSua, jlbSua));
         listItem.add(new DanhMucBean("XoaCanBo", jpnXoa, jlbXoa));
         listItem.add(new DanhMucBean("TimKiemCanBo", jpnTimKiem, jlbTimKiem));
         listItem.add(new DanhMucBean("Checkin", jpnCheckin, jlbCheckin));
-        
         
         controller.setEvent(listItem);
         
