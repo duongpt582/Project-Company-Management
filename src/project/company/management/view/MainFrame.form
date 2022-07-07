@@ -78,7 +78,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ee" green="ee" red="ee" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="JAV.COM"/>
+            <Property name="text" type="java.lang.String" value="MENU"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel3">

@@ -72,8 +72,8 @@ public class ChuyenManHinhController {
        @Override
         public void mouseClicked(MouseEvent e) {
             switch (kind) {
-                case "dang_nhap3":
-                    node = new dang_nhap3();
+                case "Home":
+                    node = new Home();
                     break;
                 case "ThemCanBo":
                     node = new ThemCB();

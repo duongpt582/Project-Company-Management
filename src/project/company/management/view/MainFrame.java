@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package project.company.management.view;
 
 import java.util.ArrayList;
@@ -9,15 +5,8 @@ import java.util.List;
 import project.company.management.bean.DanhMucBean;
 import project.company.management.controller.ChuyenManHinhController;
 
-/**
- *
- * @author thinkpro
- */
 public class MainFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainFrame
-     */
     public MainFrame() {
         initComponents();
         setTitle("Quan Ly Can Bo");
@@ -32,7 +21,7 @@ public class MainFrame extends javax.swing.JFrame {
         
         
         List<DanhMucBean> listItem = new ArrayList<>();
-        listItem.add(new DanhMucBean("dang_nhap3", jpnHome, jlbHome));
+        listItem.add(new DanhMucBean("Home", jpnHome, jlbHome));
         listItem.add(new DanhMucBean("ThemCanBo", jpnThem, jlbThem));
         listItem.add(new DanhMucBean("SuaCanBo", jpnSua, jlbSua));
         listItem.add(new DanhMucBean("XoaCanBo", jpnXoa, jlbXoa));
@@ -75,7 +64,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(238, 238, 238));
-        jLabel1.setText("JAV.COM");
+        jLabel1.setText("MENU");
 
         jPanel3.setBackground(new java.awt.Color(0, 66, 128));
 
@@ -255,7 +244,7 @@ public class MainFrame extends javax.swing.JFrame {
         jpnMenu.setLayout(jpnMenuLayout);
         jpnMenuLayout.setHorizontalGroup(
             jpnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jpnMenuLayout.setVerticalGroup(
@@ -330,9 +319,6 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -359,6 +345,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new MainFrame().setVisible(true);
             }
