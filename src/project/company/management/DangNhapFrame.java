@@ -1,8 +1,17 @@
 
 package project.company.management;
 
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.util.Arrays;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import project.company.management.view.MainFrame;
 
@@ -12,8 +21,13 @@ public class DangNhapFrame extends javax.swing.JFrame {
     public DangNhapFrame() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.initMoving(DangNhapFrame.this);
      
     }
+
+    
+    
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -22,7 +36,7 @@ public class DangNhapFrame extends javax.swing.JFrame {
         kGradientPanel1 = new com.k33ptoo.components.KGradientPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        imageLabel = new javax.swing.JLabel();
         kGradientPanel2 = new com.k33ptoo.components.KGradientPanel();
         jLabel4 = new javax.swing.JLabel();
         close_label = new javax.swing.JLabel();
@@ -46,7 +60,7 @@ public class DangNhapFrame extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/company/management/icon/icons8_java_100px.png"))); // NOI18N
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/company/management/icon/icon_app.png"))); // NOI18N
+        imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/company/management/icon/icon_app.png"))); // NOI18N
 
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
@@ -61,14 +75,14 @@ public class DangNhapFrame extends javax.swing.JFrame {
                         .addComponent(jLabel2))
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
                         .addGap(220, 220, 220)
-                        .addComponent(jLabel5)))
+                        .addComponent(imageLabel)))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         kGradientPanel1Layout.setVerticalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
                 .addContainerGap(115, Short.MAX_VALUE)
-                .addComponent(jLabel5)
+                .addComponent(imageLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
@@ -114,11 +128,6 @@ public class DangNhapFrame extends javax.swing.JFrame {
         jLabel8.setText("Mật khẩu");
 
         pf_mat_khau.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(0, 0, 0)));
-        pf_mat_khau.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pf_mat_khauActionPerformed(evt);
-            }
-        });
         pf_mat_khau.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 pf_mat_khauKeyPressed(evt);
@@ -185,13 +194,42 @@ public class DangNhapFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    @Override
+    public void paintComponents(Graphics g) {
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        GradientPaint g3 = new GradientPaint(0, 0, Color.decode("#1cb5e0"), 0, getHeight(), Color.black);
+        g2.setPaint(g3);
+        g2.fillRoundRect(0, 0, getWidth(), getHeight(), 15, 15);
+        g2.fillRect(getWidth()-20, 0, getWidth(), getHeight());
+        
+        super.paintComponents(g);
+    }
+    
+    private int x, y;
+    
+    // dùng để di chuyển Frame khi bật undecorated (tắt các nút điều hướng)
+    public  void initMoving(JFrame frame) {
+        kGradientPanel1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                x = e.getX();
+                y = e.getY();
+            }
+        });
+        kGradientPanel1.addMouseMotionListener(new MouseMotionAdapter() {
+            @Override
+                public void mouseDragged(MouseEvent e) {
+                    frame.setLocation(e.getXOnScreen() - x, e.getYOnScreen() - y);
+                }
+        });
+        
+    }
+    
     private void close_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_close_labelMouseClicked
         System.exit(0);
     }//GEN-LAST:event_close_labelMouseClicked
-
-    private void pf_mat_khauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pf_mat_khauActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pf_mat_khauActionPerformed
 
     private void bt_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_okActionPerformed
         // nếu tài khoản nhập vào giống với database thì cho vào trong.
@@ -223,18 +261,18 @@ public class DangNhapFrame extends javax.swing.JFrame {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             DatabaseUser db = new DatabaseUser();
         
-        String usernameInput = tf_tai_khoan.getText();
-        String password = String.valueOf(pf_mat_khau.getPassword());
-        
-        boolean isRight = db.searchData(usernameInput, password);
-        
-        if (isRight) {
-            JOptionPane.showMessageDialog(rootPane, "Login success");
-            MainFrame main = new MainFrame();
-            main.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Login Failure");
-        }
+            String usernameInput = tf_tai_khoan.getText();
+            String password = String.valueOf(pf_mat_khau.getPassword());
+
+            boolean isRight = db.searchData(usernameInput, password);
+
+            if (isRight) {
+                JOptionPane.showMessageDialog(rootPane, "Login success");
+                MainFrame main = new MainFrame();
+                main.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Login Failure");
+            }
 
         System.out.println("" + password);
         }
@@ -278,10 +316,10 @@ public class DangNhapFrame extends javax.swing.JFrame {
     private com.k33ptoo.components.KButton bt_cancel;
     private com.k33ptoo.components.KButton bt_ok;
     private javax.swing.JLabel close_label;
+    private javax.swing.JLabel imageLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private com.k33ptoo.components.KGradientPanel kGradientPanel1;
