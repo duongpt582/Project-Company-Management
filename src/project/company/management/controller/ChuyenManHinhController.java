@@ -9,7 +9,6 @@ import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import project.company.management.bean.DanhMucBean;
-import project.company.management.dang_nhap3;
 import project.company.management.view.Checkin;
 import project.company.management.view.Home;
 import project.company.management.view.SuaCB;
@@ -34,12 +33,12 @@ public class ChuyenManHinhController {
     
    public void setView(JPanel jpnItem, JLabel jlbItem ){
        kindSelected ="Menu" ;
-       jpnItem.setBackground(new Color(255, 255, 255));
-       jlbItem.setBackground(new Color(255, 255, 255));
+//       jpnItem.setBackground(new Color(255, 255, 255));
+//       jlbItem.setBackground(new Color(255, 255, 255));
       
        root.removeAll();
        root.setLayout(new BorderLayout());
-       root.add(new dang_nhap3());
+       root.add(new Home());
        root.validate();
        root.repaint();
    }
@@ -72,8 +71,8 @@ public class ChuyenManHinhController {
        @Override
         public void mouseClicked(MouseEvent e) {
             switch (kind) {
-                case "dang_nhap3":
-                    node = new dang_nhap3();
+                case "Home":
+                    node = new Home();
                     break;
                 case "ThemCanBo":
                     node = new ThemCB();
@@ -115,7 +114,7 @@ public class ChuyenManHinhController {
 
         @Override
         public void mouseEntered(MouseEvent e) {
-//            jpnItem.setBackground(new Color(96,100, 191));
+            jpnItem.setBackground(new Color(96,100, 191));
             jlbItem.setForeground(new Color(153, 204, 255));
         }
 
@@ -123,8 +122,8 @@ public class ChuyenManHinhController {
         public void mouseExited(MouseEvent e) {
             if(!kindSelected.equalsIgnoreCase(kind))
             {
-            jpnItem.setBackground(new Color(0,66,128));
-            jlbItem.setBackground(new Color(0,66,128));
+                jpnItem.setBackground(new Color(0,66,128));
+                jlbItem.setBackground(new Color(0,66,128));
             }
         }
        

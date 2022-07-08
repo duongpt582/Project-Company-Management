@@ -8,19 +8,19 @@ public class Customer implements Serializable {
 
     private  String chuc_vu;
     private String ten;
-    private String maCanBo;
-    private String donVi;
+    private String ngaySinh;
+    private String diaChi;
     private double luong;
     private int soNgayLamViec;
     String dateCreated;
-    private String ID;
+    public static String ID;
 
     Customer(){}
 
     public Customer(Customer object) {
         this.ten = object.ten;
-        this.maCanBo = object.maCanBo;
-        this.donVi = object.donVi;
+        this.ngaySinh = object.ngaySinh;
+        this.diaChi = object.diaChi;
         this.luong = object.luong;
         this.soNgayLamViec = object.soNgayLamViec;
         this.dateCreated = object.dateCreated;
@@ -41,20 +41,20 @@ public class Customer implements Serializable {
         this.ten = ten;
     }
 
-    public String getMaCanBo() {
-        return maCanBo;
+    public String getNgaySinh() {
+        return ngaySinh;
     }
 
-    public void setMaCanBo(String maCanBo) {
-        this.maCanBo = maCanBo;
+    public void setNgaySinh(String ngaySinh) {
+        this.ngaySinh = ngaySinh;
     }
 
-    public String getDonVi() {
-        return donVi;
+    public String getDiaChi() {
+        return diaChi;
     }
 
-    public void setDonVi(String donVi) {
-        this.donVi = donVi;
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
     }
 
     public double getLuong() {
@@ -95,18 +95,13 @@ public class Customer implements Serializable {
 
         String fullDate = myDateObj.format(myFormatObj3);
 
-
         ID = year + ten.substring(0,2).toUpperCase() + (them_can_bo.customer_count + 101);
-
-//        ID = year + ten.substring(0,2).toUpperCase() + Integer.toString( them_can_bo.customer_count+101);
-
-        System.out.println("Your Account ID: "+ ID);
-        System.out.println("Account created on: "+fullDate);
+        System.out.println("Your Account ID: " + ID);
+        System.out.println("Account created on: " + fullDate);
 
         dateCreated = fullDate;
 
-        File objectFile = new File("src/user/"+ID);
-
+        File objectFile = new File("src/user/" + ID);
         FileOutputStream fileOutput = new FileOutputStream(objectFile);
         ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
 
@@ -115,6 +110,7 @@ public class Customer implements Serializable {
 
 
         fileOutput.close();
+        objectOutput.close();
     }
 
     String doiTen(String ten){
@@ -126,7 +122,6 @@ public class Customer implements Serializable {
     String doiDonVi(String donvi){
         return donvi;
     }
-
     double doiSoNgayLamViec_giamDoc(int soNgay){
         return (double) soNgay*1000000;
     }
