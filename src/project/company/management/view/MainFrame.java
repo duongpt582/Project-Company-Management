@@ -1,15 +1,42 @@
 package project.company.management.view;
 
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import project.company.management.bean.DanhMucBean;
 import project.company.management.controller.ChuyenManHinhController;
 
 public class MainFrame extends javax.swing.JFrame {
 
-    public MainFrame() {
+    private Graphics g;
+
+    @Override
+    public void paintComponents(Graphics g) {
+        super.paintComponents(g);
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        GradientPaint g3 = new GradientPaint(0, 0, Color.decode("#1cb5e0"), 0, getHeight(), Color.decode("#1cb5e0"));
+        g2.setPaint(g3);
+        g2.fillRoundRect(0, 0, getWidth(), getHeight(), 15, 15);
+        g2.fillRect(getWidth()-20, 0, getWidth(), getHeight());
+        
+        super.paintComponents(g);
+    }
+    
+
+    public MainFrame() throws SQLException {
         initComponents();
+        setLocationRelativeTo(null);
         setTitle("Quan Ly Can Bo");
+        jpnMenu.paintComponents(g);
         
         
         ChuyenManHinhController controller = new ChuyenManHinhController(jpnView);
@@ -60,6 +87,8 @@ public class MainFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jpnBar = new javax.swing.JPanel();
+        searchText1 = new project.company.management.view.SearchText();
+        jLabel2 = new javax.swing.JLabel();
         jpnView = new javax.swing.JPanel();
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
@@ -79,6 +108,7 @@ public class MainFrame extends javax.swing.JFrame {
         setResizable(false);
 
         jpnMenu.setBackground(new java.awt.Color(0, 51, 102));
+        jpnMenu.paintComponents(g);
 
         jLabel1.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(238, 238, 238));
@@ -94,7 +124,7 @@ public class MainFrame extends javax.swing.JFrame {
         jlbHome.setBackground(new java.awt.Color(0, 66, 128));
         jlbHome.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jlbHome.setForeground(new java.awt.Color(255, 255, 255));
-        jlbHome.setText("Home");
+        jlbHome.setText("Trang chủ");
 
         javax.swing.GroupLayout jpnHomeLayout = new javax.swing.GroupLayout(jpnHome);
         jpnHome.setLayout(jpnHomeLayout);
@@ -288,7 +318,11 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
+
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 258, Short.MAX_VALUE)
+
                 .addComponent(jButton1))
         );
 
@@ -296,15 +330,23 @@ public class MainFrame extends javax.swing.JFrame {
 
         jpnBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/company/management/icon/baseline_search_black_24dp.png"))); // NOI18N
+
         javax.swing.GroupLayout jpnBarLayout = new javax.swing.GroupLayout(jpnBar);
         jpnBar.setLayout(jpnBarLayout);
         jpnBarLayout.setHorizontalGroup(
             jpnBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jpnBarLayout.createSequentialGroup()
+                .addGap(7, 7, 7)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(searchText1, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpnBarLayout.setVerticalGroup(
             jpnBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 71, Short.MAX_VALUE)
+            .addComponent(searchText1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
         );
 
         jpnView.setBackground(new java.awt.Color(235, 235, 235));
@@ -315,7 +357,7 @@ public class MainFrame extends javax.swing.JFrame {
         jpnView.setLayout(jpnViewLayout);
         jpnViewLayout.setHorizontalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 918, Short.MAX_VALUE)
+            .addGap(0, 926, Short.MAX_VALUE)
         );
         jpnViewLayout.setVerticalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -390,7 +432,11 @@ public class MainFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new MainFrame().setVisible(true);
+                try {
+                    new MainFrame().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -399,7 +445,11 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+
+    private javax.swing.JLabel jLabel2;
+
     private javax.swing.JLayeredPane jLayeredPane1;
+
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel jlbCheckin;
@@ -417,5 +467,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jpnTimKiem;
     private javax.swing.JPanel jpnView;
     private javax.swing.JPanel jpnXoa;
+    private project.company.management.view.SearchText searchText1;
     // End of variables declaration//GEN-END:variables
+
+  
 }

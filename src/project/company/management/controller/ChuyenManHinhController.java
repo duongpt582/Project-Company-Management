@@ -5,7 +5,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import project.company.management.bean.DanhMucBean;
@@ -31,7 +34,7 @@ public class ChuyenManHinhController {
         this.root = jpnRoot;
     }
     
-   public void setView(JPanel jpnItem, JLabel jlbItem ){
+   public void setView(JPanel jpnItem, JLabel jlbItem ) throws SQLException{
        kindSelected ="Menu" ;
 //       jpnItem.setBackground(new Color(255, 255, 255));
 //       jlbItem.setBackground(new Color(255, 255, 255));
@@ -72,8 +75,15 @@ public class ChuyenManHinhController {
         public void mouseClicked(MouseEvent e) {
             switch (kind) {
                 case "Home":
-                    node = new Home();
+                {
+                    try {
+                        node = new Home();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ChuyenManHinhController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
                     break;
+
                 case "ThemCanBo":
                     node = new ThemCB();
                     break;
