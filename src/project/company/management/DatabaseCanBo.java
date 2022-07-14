@@ -3,20 +3,34 @@ package project.company.management;
 
 import java.sql.*;
 import java.sql.SQLException;
+import java.util.jar.Attributes;
 import java.util.logging.*;
+
 import javax.swing.table.DefaultTableModel;
+
+import javax.swing.Action;
+import javax.swing.JOptionPane;
+
 
 public class DatabaseCanBo {
     
     public static Connection con;
+
     private Statement statement;
     DefaultTableModel model;
+
+    Statement statement;
+
 
     
     public static void main(String[] args) throws SQLException {
         DatabaseCanBo db = new DatabaseCanBo();
         db.createConnect();
+
         db.insertData1();
+
+//        db.insertData1("2020", "duong", "nam","hanoi", "nhan vien", "0", "0");
+
     }
     
     
@@ -48,12 +62,23 @@ public class DatabaseCanBo {
     /**
      *  using Statement
      */
-    public void insertData1() {
+//    String Id,String name, String gender , String address , String chuc_Vu , int day, double salary
+    public void insertData1(String Id,String name, String gender , String address , String chuc_Vu , String day, String salary) {
         try {
+
             String name = "Tu Ngoc Duc";
             String dateString;
             statement = con.createStatement();
             String dbInsert = "INSERT INTO `can_bo`( `ho_ten`, `ngay_sinh`, `dia_chi`, `chuc_vu`, `ma_can_bo`, `so_ngay_lam_viec`) VALUES ('" + name +"','2002-05-08','Ha Noi','xxxx','xxxxx','5')";
+
+//            String name = "Tu Ngoc Duc";
+             statement = con.createStatement();
+            
+                 String dbInsert = "INSERT INTO `can_bo`(`ID`, `ho_ten`, `ngay_sinh`, `Gioi_tinh`, `dia_chi`, `chuc_vu`, `so_ngay_lam_viec`, `Luong`)"
+                    + "VALUES ('" + Id + "','" + name +"','" + gender +"','" + address +"','" + chuc_Vu +"','"+ day +"','" + salary +"')";
+//String dbInsert = "INSERT INTO `can_bo`(`ID`, `ho_ten`, `ngay_sinh`, `Gioi_tinh`, `dia_chi`, `chuc_vu`, `so_ngay_lam_viec`, `Luong`) 
+//VALUES ('2002', 'duong','10','nam','HN','Db',19,19)";
+
             statement.execute(dbInsert);
             System.out.println("Insertion Complete!");
             statement.close();
@@ -77,6 +102,8 @@ public class DatabaseCanBo {
             e.printStackTrace();
         }
     }
+
+    
     
     
     
