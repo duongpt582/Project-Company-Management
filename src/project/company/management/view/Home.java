@@ -34,25 +34,25 @@ public final class Home extends javax.swing.JPanel {
 
         try {
 
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_company", "root", "");
-                System.out.println("Database Connection Success");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_company", "root", "");
+            System.out.println("Database Connection Success");
 
-                Statement statement;
-                statement = con.createStatement();
-                ResultSet rs = statement.executeQuery("SELECT * FROM can_bo");
+            Statement statement;
+            statement = con.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT * FROM can_bo");
 
-                int i = 0;
-                while (rs.next()) {
-                    hoTen = rs.getString("ho_ten");
-                    ngaySinh = rs.getString("ngay_sinh");
-                    diaChi = rs.getString("dia_chi");
-                    macanBo = rs.getString("ma_can_bo");
+            int i = 0;
+            while (rs.next()) {
+                hoTen = rs.getString("ho_ten");
+                ngaySinh = rs.getString("ngay_sinh");
+                diaChi = rs.getString("dia_chi");
+                macanBo = rs.getString("ma_can_bo");
 
 
-                    model.addRow(new Object[]{
-                            i++, null, null, hoTen, ngaySinh, diaChi, macanBo, null, null
-                    });
-                }
+                model.addRow(new Object[]{
+                        i++, null, null, hoTen, ngaySinh, diaChi, macanBo, null, null
+                });
+            }
 
             } catch (SQLException ex) {
                 Logger.getLogger(DatabaseCanBo.class.getName()).log(Level.SEVERE, null, ex);
