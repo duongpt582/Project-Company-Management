@@ -10,7 +10,7 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame() {
         initComponents();
         setTitle("Quan Ly Can Bo");
-        
+        setLocationRelativeTo(null);
         ChuyenManHinhController controller = new ChuyenManHinhController(jpnView);
         controller.setView(jpnHome, jlbHome);
         controller.setView(jpnThem, jlbThem);
