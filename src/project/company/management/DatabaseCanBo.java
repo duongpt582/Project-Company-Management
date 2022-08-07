@@ -27,7 +27,10 @@ public class DatabaseCanBo {
             
             try {
                 
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_company", "root", "");
+                con = DriverManager.getConnection(
+                        "jdbc:mysql://databases.000webhost.com:3306/id19268851_db_company",
+                        "id19268851_duong_user",
+                        "Huydietjava2002$$");
                 System.out.println("Database Connection Success");
                 
                 Statement statement = con.createStatement();
@@ -53,7 +56,8 @@ public class DatabaseCanBo {
             String name = "Tu Ngoc Duc";
             String dateString;
             statement = con.createStatement();
-            String dbInsert = "INSERT INTO `can_bo`( `ho_ten`, `ngay_sinh`, `dia_chi`, `chuc_vu`, `ma_can_bo`, `so_ngay_lam_viec`) VALUES ('" + name +"','2002-05-08','Ha Noi','xxxx','xxxxx','5')";
+            String dbInsert = "INSERT INTO `can_bo`( `ho_ten`, `ngay_sinh`, `dia_chi`, `chuc_vu`, `ma_can_bo`, `so_ngay_lam_viec`) "
+                    + "VALUES ('" + name +"','2002-05-08','Ha Noi','xxxx','xxxxx','5')";
             statement.execute(dbInsert);
             System.out.println("Insertion Complete!");
             statement.close();
