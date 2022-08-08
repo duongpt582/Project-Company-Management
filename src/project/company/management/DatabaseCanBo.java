@@ -4,17 +4,21 @@ package project.company.management;
 import java.sql.*;
 import java.sql.SQLException;
 import java.util.logging.*;
-import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class DatabaseCanBo {
     
     public static Connection con;
+    private Statement statement;
+    DefaultTableModel model;
 
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         DatabaseCanBo db = new DatabaseCanBo();
         db.createConnect();
+        db.insertData1();
     }
+    
     
     public void createConnect() {
         try {
@@ -23,7 +27,14 @@ public class DatabaseCanBo {
             
             try {
                 
+
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_company", "root", "");
+
+                con = DriverManager.getConnection(
+                        "jdbc:mysql://localhost:3307/db_company",
+                        "root",
+                        "");
+
                 System.out.println("Database Connection Success");
                 
                 Statement statement = con.createStatement();
@@ -47,8 +58,10 @@ public class DatabaseCanBo {
     public void insertData1() {
         try {
             String name = "Tu Ngoc Duc";
-            Statement statement = con.createStatement();
-            String dbInsert = "INSERT INTO `can_bo`( `ho_ten`, `ngay_sinh`, `dia_chi`, `chuc_vu`, `ma_can_bo`, `so_ngay_lam_viec`) VALUES ('" + name +"','2002-05-08','Ha Noi','xxxx','xxxxx','5')";
+            String dateString;
+            statement = con.createStatement();
+            String dbInsert = "INSERT INTO `can_bo`( `ho_ten`, `ngay_sinh`, `dia_chi`, `chuc_vu`, `ma_can_bo`, `so_ngay_lam_viec`) "
+                    + "VALUES ('" + name +"','2002-05-08','Ha Noi','xxxx','xxxxx','5')";
             statement.execute(dbInsert);
             System.out.println("Insertion Complete!");
             statement.close();
@@ -72,6 +85,23 @@ public class DatabaseCanBo {
             e.printStackTrace();
         }
     }
+
+    public void insertData1(String ma, String ten, String gender, String diaChi, String chucVu, int soNgayLamViec, double luong) {     
+        
+        try {
+            String name = "Tu Ngoc Duc";
+            String dateString;
+            statement = con.createStatement();
+            String dbInsert = "INSERT INTO `can_bo`( `ho_ten`, `ngay_sinh`, `dia_chi`, `chuc_vu`, `ma_can_bo`, `so_ngay_lam_viec`) "
+                    + "VALUES ('" + ten +"','2002-05-08','Ha Noi','xxxx','xxxxx','5')";
+            statement.execute(dbInsert);
+            System.out.println("Insertion Complete!");
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
     
     
 }
