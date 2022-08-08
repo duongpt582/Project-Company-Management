@@ -120,7 +120,6 @@ public class DangNhapFrame extends javax.swing.JFrame {
         tf_tai_khoan.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         tf_tai_khoan.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         tf_tai_khoan.setRequestFocusEnabled(true);
-        tf_tai_khoan.setSelectedTextColor(new java.awt.Color(0, 0, 0));
 
         jLabel8.setText("Password");
 
