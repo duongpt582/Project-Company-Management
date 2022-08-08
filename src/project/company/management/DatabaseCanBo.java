@@ -27,10 +27,14 @@ public class DatabaseCanBo {
             
             try {
                 
+
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_company", "root", "");
+
                 con = DriverManager.getConnection(
                         "jdbc:mysql://localhost:3307/db_company",
                         "root",
                         "");
+
                 System.out.println("Database Connection Success");
                 
                 Statement statement = con.createStatement();

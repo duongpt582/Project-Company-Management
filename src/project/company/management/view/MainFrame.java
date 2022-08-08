@@ -36,9 +36,13 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Quan Ly Can Bo");
+
+        setLocationRelativeTo(null);
+
         jpnMenu.paintComponents(g);
         
         
+
         ChuyenManHinhController controller = new ChuyenManHinhController(jpnView);
         controller.setView(jpnHome, jlbHome);
         controller.setView(jpnThem, jlbThem);
