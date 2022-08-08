@@ -114,26 +114,26 @@ public class ChuyenManHinhController {
         public void mousePressed(MouseEvent e) {
             kindSelected = kind ;
 //            jpnItem.setBackground(new Color(96,100, 191));
-            jlbItem.setForeground(new Color(153, 204, 255));
+            jlbItem.setForeground(new Color(255, 102, 0));
         }
 
         @Override
         public void mouseReleased(MouseEvent e) {
-         
+         jlbItem.setForeground(new Color(255, 255, 255));
         }
 
         @Override
         public void mouseEntered(MouseEvent e) {
-            jpnItem.setBackground(new Color(96,100, 191));
-            jlbItem.setForeground(new Color(153, 204, 255));
+//            jpnItem.setBackground(new Color(96,100, 191));
+            jlbItem.setForeground(new Color(255, 255, 255));
         }
 
         @Override
         public void mouseExited(MouseEvent e) {
             if(!kindSelected.equalsIgnoreCase(kind))
             {
-                jpnItem.setBackground(new Color(0,66,128));
-                jlbItem.setBackground(new Color(0,66,128));
+//                jpnItem.setBackground(new Color(0,66,128));
+                jlbItem.setBackground(new Color(255, 255, 255));
             }
         }
        
