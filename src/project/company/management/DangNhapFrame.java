@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 import project.company.management.view.MainFrame;
 
 
-public class DangNhapFrame extends javax.swing.JFrame {
+public final class DangNhapFrame extends javax.swing.JFrame {
 
     public DangNhapFrame() {
         initComponents();

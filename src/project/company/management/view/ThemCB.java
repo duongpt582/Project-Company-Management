@@ -442,7 +442,7 @@ public class ThemCB extends javax.swing.JPanel {
         list.add(customer); // them vao danh sach canBo
         showResult();
         
-//        db.insertData1(ma, ten,gender,diaChi,chucVu,soNgayLamViec,luong);
+        db.insertData1(ma, ten, gender, diaChi, chucVu, soNgayLamViec, luong);
     }//GEN-LAST:event_addButtonActionPerformed
 
     int i=1;
