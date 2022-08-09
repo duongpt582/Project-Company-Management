@@ -26,7 +26,7 @@ public class DatabaseUser {
             
             try {
                 
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_company", "root", "");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_company", "root", "");
                 System.out.println("Database Connection Success");
                 
                 Statement statement = con.createStatement();
@@ -48,7 +48,7 @@ public class DatabaseUser {
     public boolean searchData(String username1, String password1) {
         try {
             
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_company", "root", "");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_company", "root", "");
             PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM user WHERE username=? and password=?");
             preparedStatement.setString(1, username1);
             preparedStatement.setString(2, password1);
