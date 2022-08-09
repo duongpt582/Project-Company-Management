@@ -10,13 +10,16 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import project.company.management.view.MainFrame;
 
 
-public class DangNhapFrame extends javax.swing.JFrame {
+public final class DangNhapFrame extends javax.swing.JFrame {
 
     public DangNhapFrame() {
         initComponents();
@@ -24,10 +27,6 @@ public class DangNhapFrame extends javax.swing.JFrame {
         this.initMoving(DangNhapFrame.this);
      
     }
-
-    
-    
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -49,7 +48,6 @@ public class DangNhapFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         kGradientPanel1.setkEndColor(new java.awt.Color(255, 51, 51));
         kGradientPanel1.setkGradientFocus(50);
@@ -90,8 +88,6 @@ public class DangNhapFrame extends javax.swing.JFrame {
                 .addGap(183, 183, 183))
         );
 
-        getContentPane().add(kGradientPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 600));
-
         kGradientPanel2.setkEndColor(new java.awt.Color(255, 102, 102));
         kGradientPanel2.setkGradientFocus(50);
         kGradientPanel2.setkStartColor(new java.awt.Color(204, 204, 204));
@@ -111,6 +107,7 @@ public class DangNhapFrame extends javax.swing.JFrame {
         });
 
         bt_cancel.setText("Cancel");
+        bt_cancel.setToolTipText("Click to reset username and password field");
         bt_cancel.setkEndColor(new java.awt.Color(196, 199, 82));
         bt_cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,14 +115,13 @@ public class DangNhapFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setText("Tài khoản");
+        jLabel7.setText("Username");
 
         tf_tai_khoan.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         tf_tai_khoan.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         tf_tai_khoan.setRequestFocusEnabled(true);
-        tf_tai_khoan.setSelectedTextColor(new java.awt.Color(0, 0, 0));
 
-        jLabel8.setText("Mật khẩu");
+        jLabel8.setText("Password");
 
         pf_mat_khau.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(0, 0, 0)));
         pf_mat_khau.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -135,6 +131,7 @@ public class DangNhapFrame extends javax.swing.JFrame {
         });
 
         bt_ok.setText("OK");
+        bt_ok.setToolTipText("Click to login");
         bt_ok.setkEndColor(new java.awt.Color(196, 199, 82));
         bt_ok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,7 +186,20 @@ public class DangNhapFrame extends javax.swing.JFrame {
                     .addGap(108, 108, 108)))
         );
 
-        getContentPane().add(kGradientPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 660, 600));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(kGradientPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(kGradientPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(kGradientPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(kGradientPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -210,7 +220,7 @@ public class DangNhapFrame extends javax.swing.JFrame {
     private int x, y;
     
     // dùng để di chuyển Frame khi bật undecorated (tắt các nút điều hướng)
-    public  void initMoving(JFrame frame) {
+    public void initMoving(JFrame frame) {
         kGradientPanel1.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -242,6 +252,14 @@ public class DangNhapFrame extends javax.swing.JFrame {
         
         if (isRight) {
             JOptionPane.showMessageDialog(rootPane, "Login success");
+            MainFrame main = null;
+            try {
+                main = new MainFrame();
+            } catch (SQLException ex) {
+                Logger.getLogger(DangNhapFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            main.setVisible(true);
+            this.hide();
         } else {
             JOptionPane.showMessageDialog(rootPane, "Login Failure");
         }
@@ -259,22 +277,7 @@ public class DangNhapFrame extends javax.swing.JFrame {
     private void pf_mat_khauKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pf_mat_khauKeyPressed
         // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            DatabaseUser db = new DatabaseUser();
-        
-            String usernameInput = tf_tai_khoan.getText();
-            String password = String.valueOf(pf_mat_khau.getPassword());
-
-            boolean isRight = db.searchData(usernameInput, password);
-
-            if (isRight) {
-                JOptionPane.showMessageDialog(rootPane, "Login success");
-                MainFrame main = new MainFrame();
-                main.setVisible(true);
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "Login Failure");
-            }
-
-        System.out.println("" + password);
+            bt_ok.doClick();
         }
     }//GEN-LAST:event_pf_mat_khauKeyPressed
 

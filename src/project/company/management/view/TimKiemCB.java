@@ -346,6 +346,7 @@ public class TimKiemCB extends javax.swing.JPanel {
                     model.addRow(new Object[]{
                         txtInput.getText(), hoTen, ngaySinh, gioiTinh, diaChi, chucVu, soNgayLamViec, luong
                     });
+                    txtInput.setEditable(false);
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Không tìm thấy cán bộ phù hợp!");
