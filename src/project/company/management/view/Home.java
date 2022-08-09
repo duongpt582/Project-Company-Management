@@ -25,8 +25,8 @@ public final class Home extends javax.swing.JPanel {
         
     }
     public void showData() {
-    String id,  hoTen, diaChi, gioiTinh, ngaySinh;
-    int soNgayLam;
+        String id,  hoTen, diaChi, gioiTinh, ngaySinh;
+        int soNgayLam;
 
     try {
 
