@@ -44,8 +44,8 @@ public class MainFrame extends javax.swing.JFrame {
         controller.setView(jpnThem, jlbThem);
         controller.setView(jpnSua, jlbSua);
         controller.setView(jpnXoa, jlbXoa);
-        controller.setView(jpnTimKiem, jlbTimKiem);
-        controller.setView(jpnCheckin, jlbCheckin);
+        controller.setView(jpnPDF, jlbPDF);
+        controller.setView(jpnLogOut, jlbLogOut);
         
         
         List<DanhMucBean> listItem = new ArrayList<>();
@@ -53,8 +53,8 @@ public class MainFrame extends javax.swing.JFrame {
         listItem.add(new DanhMucBean("ThemCanBo", jpnThem, jlbThem));
         listItem.add(new DanhMucBean("SuaCanBo", jpnSua, jlbSua));
         listItem.add(new DanhMucBean("XoaCanBo", jpnXoa, jlbXoa));
-        listItem.add(new DanhMucBean("TimKiemCanBo", jpnTimKiem, jlbTimKiem));
-        listItem.add(new DanhMucBean("Checkin", jpnCheckin, jlbCheckin));
+        listItem.add(new DanhMucBean("PDF", jpnPDF, jlbPDF));
+        listItem.add(new DanhMucBean("LogOut", jpnLogOut, jlbLogOut));
         
         controller.setEvent(listItem);
         
@@ -80,10 +80,10 @@ public class MainFrame extends javax.swing.JFrame {
         jlbSua = new javax.swing.JLabel();
         jpnXoa = new javax.swing.JPanel();
         jlbXoa = new javax.swing.JLabel();
-        jpnTimKiem = new javax.swing.JPanel();
-        jlbTimKiem = new javax.swing.JLabel();
-        jpnCheckin = new javax.swing.JPanel();
-        jlbCheckin = new javax.swing.JLabel();
+        jpnPDF = new javax.swing.JPanel();
+        jlbPDF = new javax.swing.JLabel();
+        jpnLogOut = new javax.swing.JPanel();
+        jlbLogOut = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jpnBar = new javax.swing.JPanel();
@@ -124,6 +124,8 @@ public class MainFrame extends javax.swing.JFrame {
         jlbHome.setBackground(new java.awt.Color(0, 66, 128));
         jlbHome.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jlbHome.setForeground(new java.awt.Color(255, 255, 255));
+        jlbHome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlbHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/company/management/icon/homeIcon.png"))); // NOI18N
         jlbHome.setText("Trang chủ");
 
         javax.swing.GroupLayout jpnHomeLayout = new javax.swing.GroupLayout(jpnHome);
@@ -138,7 +140,7 @@ public class MainFrame extends javax.swing.JFrame {
             jpnHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnHomeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbHome, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                .addComponent(jlbHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -148,7 +150,8 @@ public class MainFrame extends javax.swing.JFrame {
         jlbThem.setBackground(new java.awt.Color(0, 66, 128));
         jlbThem.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jlbThem.setForeground(new java.awt.Color(255, 255, 255));
-        jlbThem.setText("Thêm mới cán bộ");
+        jlbThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/company/management/icon/add-user.png"))); // NOI18N
+        jlbThem.setText("Thêm mới");
 
         javax.swing.GroupLayout jpnThemLayout = new javax.swing.GroupLayout(jpnThem);
         jpnThem.setLayout(jpnThemLayout);
@@ -163,7 +166,7 @@ public class MainFrame extends javax.swing.JFrame {
             jpnThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnThemLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbThem, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                .addComponent(jlbThem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -173,7 +176,8 @@ public class MainFrame extends javax.swing.JFrame {
         jlbSua.setBackground(new java.awt.Color(0, 66, 128));
         jlbSua.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jlbSua.setForeground(new java.awt.Color(255, 255, 255));
-        jlbSua.setText("Sửa thông tin cán bộ");
+        jlbSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/company/management/icon/bugIcon.png"))); // NOI18N
+        jlbSua.setText("Sửa");
 
         javax.swing.GroupLayout jpnSuaLayout = new javax.swing.GroupLayout(jpnSua);
         jpnSua.setLayout(jpnSuaLayout);
@@ -187,7 +191,7 @@ public class MainFrame extends javax.swing.JFrame {
             jpnSuaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnSuaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbSua, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                .addComponent(jlbSua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -197,7 +201,8 @@ public class MainFrame extends javax.swing.JFrame {
         jlbXoa.setBackground(new java.awt.Color(0, 66, 128));
         jlbXoa.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jlbXoa.setForeground(new java.awt.Color(255, 255, 255));
-        jlbXoa.setText("Xoá cán bộ");
+        jlbXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/company/management/icon/delete.png"))); // NOI18N
+        jlbXoa.setText("Xoá");
 
         javax.swing.GroupLayout jpnXoaLayout = new javax.swing.GroupLayout(jpnXoa);
         jpnXoa.setLayout(jpnXoaLayout);
@@ -211,57 +216,59 @@ public class MainFrame extends javax.swing.JFrame {
             jpnXoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnXoaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbXoa, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                .addComponent(jlbXoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jpnTimKiem.setBackground(new java.awt.Color(0, 66, 128));
-        jpnTimKiem.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.black, null));
+        jpnPDF.setBackground(new java.awt.Color(0, 66, 128));
+        jpnPDF.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.black, null));
 
-        jlbTimKiem.setBackground(new java.awt.Color(0, 66, 128));
-        jlbTimKiem.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jlbTimKiem.setForeground(new java.awt.Color(255, 255, 255));
-        jlbTimKiem.setText("Tìm kiếm cán bộ");
+        jlbPDF.setBackground(new java.awt.Color(0, 66, 128));
+        jlbPDF.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jlbPDF.setForeground(new java.awt.Color(255, 255, 255));
+        jlbPDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/company/management/icon/printer.png"))); // NOI18N
+        jlbPDF.setText("Xuất PDF");
 
-        javax.swing.GroupLayout jpnTimKiemLayout = new javax.swing.GroupLayout(jpnTimKiem);
-        jpnTimKiem.setLayout(jpnTimKiemLayout);
-        jpnTimKiemLayout.setHorizontalGroup(
-            jpnTimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnTimKiemLayout.createSequentialGroup()
+        javax.swing.GroupLayout jpnPDFLayout = new javax.swing.GroupLayout(jpnPDF);
+        jpnPDF.setLayout(jpnPDFLayout);
+        jpnPDFLayout.setHorizontalGroup(
+            jpnPDFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnPDFLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlbPDF, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jpnTimKiemLayout.setVerticalGroup(
-            jpnTimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnTimKiemLayout.createSequentialGroup()
+        jpnPDFLayout.setVerticalGroup(
+            jpnPDFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnPDFLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                .addComponent(jlbPDF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jpnCheckin.setBackground(new java.awt.Color(0, 66, 128));
-        jpnCheckin.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.black, null));
+        jpnLogOut.setBackground(new java.awt.Color(0, 66, 128));
+        jpnLogOut.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.black, null));
 
-        jlbCheckin.setBackground(new java.awt.Color(0, 66, 128));
-        jlbCheckin.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jlbCheckin.setForeground(new java.awt.Color(255, 255, 255));
-        jlbCheckin.setText("Checkin giờ làm");
+        jlbLogOut.setBackground(new java.awt.Color(0, 66, 128));
+        jlbLogOut.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jlbLogOut.setForeground(new java.awt.Color(255, 255, 255));
+        jlbLogOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/company/management/icon/log-out.png"))); // NOI18N
+        jlbLogOut.setText("Đăng xuất");
 
-        javax.swing.GroupLayout jpnCheckinLayout = new javax.swing.GroupLayout(jpnCheckin);
-        jpnCheckin.setLayout(jpnCheckinLayout);
-        jpnCheckinLayout.setHorizontalGroup(
-            jpnCheckinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnCheckinLayout.createSequentialGroup()
+        javax.swing.GroupLayout jpnLogOutLayout = new javax.swing.GroupLayout(jpnLogOut);
+        jpnLogOut.setLayout(jpnLogOutLayout);
+        jpnLogOutLayout.setHorizontalGroup(
+            jpnLogOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnLogOutLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbCheckin, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlbLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jpnCheckinLayout.setVerticalGroup(
-            jpnCheckinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnCheckinLayout.createSequentialGroup()
+        jpnLogOutLayout.setVerticalGroup(
+            jpnLogOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnLogOutLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbCheckin, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                .addComponent(jlbLogOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -271,8 +278,8 @@ public class MainFrame extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jpnCheckin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jpnTimKiem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jpnLogOut, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jpnPDF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jpnHome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jpnThem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jpnSua, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -290,9 +297,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpnTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jpnPDF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpnCheckin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jpnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jButton1.setText("jButton1");
@@ -318,7 +325,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 409, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 283, Short.MAX_VALUE)
                 .addComponent(jButton1))
         );
 
@@ -445,19 +452,19 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel jlbCheckin;
     private javax.swing.JLabel jlbHome;
+    private javax.swing.JLabel jlbLogOut;
+    private javax.swing.JLabel jlbPDF;
     private javax.swing.JLabel jlbSua;
     private javax.swing.JLabel jlbThem;
-    private javax.swing.JLabel jlbTimKiem;
     private javax.swing.JLabel jlbXoa;
     private javax.swing.JPanel jpnBar;
-    private javax.swing.JPanel jpnCheckin;
     private javax.swing.JPanel jpnHome;
+    private javax.swing.JPanel jpnLogOut;
     private javax.swing.JPanel jpnMenu;
+    private javax.swing.JPanel jpnPDF;
     private javax.swing.JPanel jpnSua;
     private javax.swing.JPanel jpnThem;
-    private javax.swing.JPanel jpnTimKiem;
     private javax.swing.JPanel jpnView;
     private javax.swing.JPanel jpnXoa;
     private project.company.management.view.SearchText searchText1;

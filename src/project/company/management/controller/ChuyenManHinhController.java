@@ -12,12 +12,14 @@ import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import project.company.management.bean.DanhMucBean;
-import project.company.management.view.Checkin;
+
 import project.company.management.view.Home;
 import project.company.management.view.SuaCB;
 import project.company.management.view.ThemCB;
-import project.company.management.view.TimKiemCB;
+
 import project.company.management.view.XoaCB;
+import project.company.management.view.PDF;
+import project.company.management.view.LogOut;
 
 /**
  *
@@ -35,7 +37,7 @@ public class ChuyenManHinhController {
     }
     
    public void setView(JPanel jpnItem, JLabel jlbItem ) throws SQLException{
-       kindSelected ="Menu" ;
+//       kindSelected ="Menu" ;
 //       jpnItem.setBackground(new Color(255, 255, 255));
 //       jlbItem.setBackground(new Color(255, 255, 255));
       
@@ -93,11 +95,11 @@ public class ChuyenManHinhController {
                 case "XoaCanBo":
                     node = new XoaCB();
                     break;
-                case "TimKiemCanBo":
-                    node = new TimKiemCB();
+                case "PDF":
+                    node = new PDF();
                     break;
-                case "Checkin":
-                    node = new Checkin();
+                case "LogOut":
+                    node = new LogOut();
                     break;
                 default:
                     break;
@@ -114,7 +116,7 @@ public class ChuyenManHinhController {
         public void mousePressed(MouseEvent e) {
             kindSelected = kind ;
 //            jpnItem.setBackground(new Color(96,100, 191));
-            jlbItem.setForeground(new Color(255, 102, 0));
+            jlbItem.setForeground(new Color(255,102,0));
         }
 
         @Override
@@ -124,7 +126,7 @@ public class ChuyenManHinhController {
 
         @Override
         public void mouseEntered(MouseEvent e) {
-//            jpnItem.setBackground(new Color(96,100, 191));
+//            jpnItem.setBackground(new Color(96,100, 191));102, 204, 255
             jlbItem.setForeground(new Color(255, 255, 255));
         }
 
