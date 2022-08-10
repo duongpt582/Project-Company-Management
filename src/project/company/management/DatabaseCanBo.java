@@ -19,6 +19,10 @@ public class DatabaseCanBo {
         db.insertData1();
     }
     
+    public DatabaseCanBo() {
+        createConnect();
+    }
+    
     
     public void createConnect() {
         try {
@@ -27,10 +31,14 @@ public class DatabaseCanBo {
             
             try {
                 
+
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_company", "root", "");
+
                 con = DriverManager.getConnection(
                         "jdbc:mysql://localhost:3307/db_company",
                         "root",
                         "");
+
                 System.out.println("Database Connection Success");
                 
                 Statement statement = con.createStatement();
@@ -82,20 +90,22 @@ public class DatabaseCanBo {
         }
     }
 
-    public void insertData1(String ma, String ten, String gender, String diaChi, String chucVu, int soNgayLamViec, double luong) {     
-        
+    public void insertData1(String ma, String ten, String ngaySinh, 
+                    String gioiTinh, String diaChi, String chucVu, 
+                    int soNgayLamViec, double luong) {
         try {
-            String name = "Tu Ngoc Duc";
-            String dateString;
             statement = con.createStatement();
-            String dbInsert = "INSERT INTO `can_bo`( `ho_ten`, `ngay_sinh`, `dia_chi`, `chuc_vu`, `ma_can_bo`, `so_ngay_lam_viec`) "
-                    + "VALUES ('" + ten +"','2002-05-08','Ha Noi','xxxx','xxxxx','5')";
+            String dbInsert = "INSERT INTO `can_bo`(`ID`, `ho_ten`, `ngay_sinh`, `Gioi_tinh`, `dia_chi`, `chuc_vu`, `so_ngay_lam_viec`, `Luong`) "
+                    + "VALUES ('"+ ma +"', '"+ten+"', '"+ngaySinh+"','"+gioiTinh+"','"+diaChi+"','"+chucVu+"','"+soNgayLamViec+"','"+luong+"')";
+                   
             statement.execute(dbInsert);
             System.out.println("Insertion Complete!");
             statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+
     }
     
     

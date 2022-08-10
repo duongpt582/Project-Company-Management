@@ -19,14 +19,14 @@ public final class Home extends javax.swing.JPanel {
         
         //Tạo ra các cột với các tiêu đề
         model.setColumnIdentifiers(new Object[]{
-                "STT", "ID","Chức Vụ", "Tên", "Ngày sinh", "Địa chỉ", "Số Ngày Làm Việc", "Lương" ,"Ngày Thêm"
+                "STT", "ID","Chức Vụ", "Tên", "Ngày sinh", "Địa chỉ", "Giới Tính" ,"Số Ngày Làm Việc", "Lương"
         });
         showData();
         
     }
     public void showData() {
-    String hoTen, diaChi, macanBo, ngaySinh;
-    int id, soNgayLam;
+    String id,  hoTen, diaChi, gioiTinh, ngaySinh;
+    int soNgayLam;
 
     try {
 
@@ -41,16 +41,20 @@ public final class Home extends javax.swing.JPanel {
             statement = con.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM can_bo");
 
-            int i = 0;
+            int i = 1;
             while (rs.next()) {
+                id = rs.getString(2);
                 hoTen = rs.getString("ho_ten");
                 ngaySinh = rs.getString("ngay_sinh");
-                diaChi = rs.getString("dia_chi");
-                macanBo = rs.getString("ma_can_bo");
-
+                
+                gioiTinh = rs.getString(5);
+                diaChi = rs.getString(6);
+                String chucVu = rs.getString(7);
+                String soNgayLamViec = rs.getString(8);
+                String luong = rs.getString(9);
 
                 model.addRow(new Object[]{
-                        i++, null, null, hoTen, ngaySinh, diaChi, macanBo, null, null
+                        i++, id, chucVu, hoTen, ngaySinh, diaChi, gioiTinh, soNgayLamViec, luong
                 });
             }
 
@@ -86,7 +90,7 @@ public final class Home extends javax.swing.JPanel {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 607, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         kGradientPanel1.setkEndColor(new java.awt.Color(51, 204, 255));
@@ -104,21 +108,20 @@ public final class Home extends javax.swing.JPanel {
         kGradientPanel1Layout.setHorizontalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                .addContainerGap(73, Short.MAX_VALUE)
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1042, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(65, 65, 65))))
+                .addContainerGap(1091, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
+            .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1042, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         kGradientPanel1Layout.setVerticalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
+                .addGap(195, 195, 195)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
                 .addComponent(jButton1))
         );
 
