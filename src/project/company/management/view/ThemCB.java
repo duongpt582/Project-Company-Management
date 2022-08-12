@@ -41,6 +41,8 @@ public class ThemCB extends javax.swing.JPanel {
 
     public ThemCB() {
         initComponents();
+        jlbChange.setVisible(false);
+        txtChange.setVisible(false);
         list = new ArrayList<>();
         model = (DefaultTableModel) jTable1.getModel();
         btgGroup = new ButtonGroup();

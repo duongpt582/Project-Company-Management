@@ -8,11 +8,11 @@ public class Customer implements Serializable {
     
     private String gioiTinh;
     private  String chuc_vu;
-    private String ten;
-    private String ngaySinh;
-    private String diaChi;
+    public String ten;
+    public String ngaySinh;
+    public String diaChi;
     private double luong;
-    private int soNgayLamViec;
+    public int soNgayLamViec;
     String dateCreated;
     public static String ID;
 
