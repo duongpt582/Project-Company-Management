@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 import javax.management.Query;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import project.company.management.DatabaseCanBo;
+import project.company.management.database.DatabaseCanBo;
 import java.io.FileNotFoundException;
 import com.itextpdf.text.DocumentException;
 import java.io.IOException;

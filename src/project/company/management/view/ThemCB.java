@@ -16,7 +16,7 @@ import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 import project.company.management.Customer;
-import project.company.management.DatabaseCanBo;
+import project.company.management.database.DatabaseCanBo;
 
 public class ThemCB extends javax.swing.JPanel {
 

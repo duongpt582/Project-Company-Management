@@ -2,7 +2,7 @@
 package project.company.management.view;
 
 import javax.swing.table.DefaultTableModel;
-import project.company.management.DatabaseCanBo;
+import project.company.management.database.DatabaseCanBo;
 import java.sql.*;
 import java.sql.SQLException;
 import java.util.logging.*;
