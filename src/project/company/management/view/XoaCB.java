@@ -232,7 +232,7 @@ public class XoaCB extends javax.swing.JPanel {
                     vector.add(rs.getString("dia_chi"));
                     vector.add(rs.getString("chuc_vu"));
                     vector.add(rs.getString("so_ngay_lam_viec"));
-                    vector.add(String.format("%,.2f", Double.parseDouble(rs.getString("Luong"))));
+                    vector.add(rs.getString("Luong"));
                     model.addRow(vector);
                 }
             } catch (SQLException ex) {

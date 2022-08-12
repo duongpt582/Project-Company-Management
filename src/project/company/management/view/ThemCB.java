@@ -15,8 +15,8 @@ import javax.swing.table.DefaultTableModel;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
-import project.company.management.Customer;
-import project.company.management.DatabaseCanBo;
+import project.company.management.model.Customer;
+import project.company.management.database.DatabaseCanBo;
 
 public class ThemCB extends javax.swing.JPanel {
 
@@ -245,7 +245,7 @@ public class ThemCB extends javax.swing.JPanel {
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(240, Short.MAX_VALUE))
+                .addContainerGap(179, Short.MAX_VALUE))
             .addComponent(jScrollPane1)
         );
         kGradientPanel1Layout.setVerticalGroup(

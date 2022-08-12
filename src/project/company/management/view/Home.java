@@ -2,7 +2,7 @@
 package project.company.management.view;
 
 import javax.swing.table.DefaultTableModel;
-import project.company.management.DatabaseCanBo;
+import project.company.management.database.DatabaseCanBo;
 import java.sql.*;
 import java.sql.SQLException;
 import java.util.logging.*;
@@ -15,18 +15,20 @@ public final class Home extends javax.swing.JPanel {
     public Home() throws SQLException {
         initComponents();
         
-        model = (DefaultTableModel) tableInfomation.getModel();
         
-        //Tạo ra các cột với các tiêu đề
-        model.setColumnIdentifiers(new Object[]{
-                "STT", "ID","Chức Vụ", "Tên", "Ngày sinh", "Địa chỉ", "Giới Tính" ,"Số Ngày Làm Việc", "Lương"
-        });
         showData();
         
     }
     public void showData() {
         String id,  hoTen, diaChi, gioiTinh, ngaySinh;
         int soNgayLam;
+        
+        model = (DefaultTableModel) tableInfomation.getModel();
+        
+        //Tạo ra các cột với các tiêu đề
+        model.setColumnIdentifiers(new Object[]{
+                "STT", "ID","Chức Vụ", "Tên", "Ngày sinh", "Địa chỉ", "Giới Tính" ,"Số Ngày Làm Việc", "Lương"
+        });
 
     try {
 
@@ -46,7 +48,6 @@ public final class Home extends javax.swing.JPanel {
                 id = rs.getString(2);
                 hoTen = rs.getString("ho_ten");
                 ngaySinh = rs.getString("ngay_sinh");
-                
                 gioiTinh = rs.getString(5);
                 diaChi = rs.getString(6);
                 String chucVu = rs.getString(7);
