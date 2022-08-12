@@ -199,10 +199,10 @@
                                           <Component id="txtDiaChi" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtNgaySinh" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="txtNgaySinh" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                          <Component id="cbChucVu" min="-2" pref="160" max="-2" attributes="0"/>
+                                          <Component id="cbChucVu" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -306,7 +306,7 @@
                 <Component class="javax.swing.JTable" name="tblShow">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="8" rowCount="1">
+                      <Table columnCount="8" rowCount="0">
                         <Column editable="true" title="ID" type="java.lang.String"/>
                         <Column editable="true" title="H&#x1ecd; t&#xea;n" type="java.lang.String"/>
                         <Column editable="true" title="Ng&#xe0;y sinh" type="java.lang.String"/>
