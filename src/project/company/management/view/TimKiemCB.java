@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -13,6 +14,9 @@ public class TimKiemCB extends javax.swing.JPanel {
     
     public TimKiemCB() {
         initComponents();
+        ButtonGroup btnGr = new ButtonGroup();
+        btnGr.add(btnNam);
+        btnGr.add(btnNu);
     }
 
     
@@ -34,7 +38,6 @@ public class TimKiemCB extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         txtHoTen = new javax.swing.JTextField();
         txtNgaySinh = new javax.swing.JTextField();
-        txtGioiTinh = new javax.swing.JTextField();
         txtDiaChi = new javax.swing.JTextField();
         txtSoNgayLamViec = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -45,6 +48,8 @@ public class TimKiemCB extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         btnUpdate = new com.k33ptoo.components.KButton();
         cbChucVu = new javax.swing.JComboBox<>();
+        btnNam = new javax.swing.JRadioButton();
+        btnNu = new javax.swing.JRadioButton();
 
         jLabel10.setText("jLabel10");
 
@@ -154,8 +159,6 @@ public class TimKiemCB extends javax.swing.JPanel {
 
         txtNgaySinh.setPreferredSize(new java.awt.Dimension(175, 40));
 
-        txtGioiTinh.setPreferredSize(new java.awt.Dimension(175, 40));
-
         txtDiaChi.setPreferredSize(new java.awt.Dimension(175, 40));
 
         txtSoNgayLamViec.setPreferredSize(new java.awt.Dimension(175, 40));
@@ -186,12 +189,18 @@ public class TimKiemCB extends javax.swing.JPanel {
             }
         });
 
-        cbChucVu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "  ", "Giám đốc", "Trưởng phòng", "Nhân viên" }));
+        cbChucVu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Giám Đốc", "Trưởng Phòng", "Nhân Viên" }));
         cbChucVu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbChucVuActionPerformed(evt);
             }
         });
+
+        btnNam.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnNam.setText("Nam");
+
+        btnNu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnNu.setText("Nữ");
 
         javax.swing.GroupLayout kGradientPanel2Layout = new javax.swing.GroupLayout(kGradientPanel2);
         kGradientPanel2.setLayout(kGradientPanel2Layout);
@@ -223,10 +232,18 @@ public class TimKiemCB extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
-                            .addComponent(txtGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11)
-                            .addComponent(txtSoNgayLamViec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, kGradientPanel2Layout.createSequentialGroup()
+                                    .addComponent(btnNam)
+                                    .addGap(37, 37, 37)
+                                    .addComponent(btnNu))
+                                .addComponent(txtSoNgayLamViec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(43, 43, 43))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
             .addGroup(kGradientPanel2Layout.createSequentialGroup()
                 .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(kGradientPanel2Layout.createSequentialGroup()
@@ -236,10 +253,6 @@ public class TimKiemCB extends javax.swing.JPanel {
                         .addGap(108, 108, 108)
                         .addComponent(jLabel3)))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
         );
         kGradientPanel2Layout.setVerticalGroup(
             kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,8 +274,12 @@ public class TimKiemCB extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnNam)
+                            .addComponent(btnNu))))
                 .addGap(79, 79, 79)
                 .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -329,7 +346,8 @@ public class TimKiemCB extends javax.swing.JPanel {
                     txtNgaySinh.setText(ngaySinh);
                     
                     String gioiTinh = rs.getString("Gioi_tinh");
-                    txtGioiTinh.setText(gioiTinh);
+                    if(gioiTinh.equals("Nam")) btnNam.doClick();
+                    else btnNu.doClick();
                     
                     String diaChi = rs.getString("dia_chi");
                     txtDiaChi.setText(diaChi);
@@ -346,7 +364,6 @@ public class TimKiemCB extends javax.swing.JPanel {
                     model.addRow(new Object[]{
                         txtInput.getText(), hoTen, ngaySinh, gioiTinh, diaChi, chucVu, soNgayLamViec, luong
                     });
-                    txtInput.setEditable(false);
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Không tìm thấy cán bộ phù hợp!");
@@ -371,6 +388,7 @@ public class TimKiemCB extends javax.swing.JPanel {
             // TODO add your handling code here:
             Class.forName("com.mysql.cj.jdbc.Driver");
             try {
+                String gioiTinh;
                 DefaultTableModel model = (DefaultTableModel) tblShow.getModel();
                 model.setRowCount(0);
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_company", "root", "");
@@ -379,7 +397,6 @@ public class TimKiemCB extends javax.swing.JPanel {
 
                 if(txtHoTen.getText().equals("") ||
                    txtNgaySinh.getText().equals("") || 
-                   txtGioiTinh.getText().equals("") ||
                    txtDiaChi.getText().equals("") || 
                    cbChucVu.getSelectedIndex() == 0 || 
                    txtSoNgayLamViec.getText().equals("")){
@@ -393,21 +410,28 @@ public class TimKiemCB extends javax.swing.JPanel {
                         preparedStatement.setString(8, txtInput.getText());
                         preparedStatement.setString(1, txtHoTen.getText());
                         preparedStatement.setString(2, txtNgaySinh.getText());
-                        preparedStatement.setString(3, txtGioiTinh.getText());
+                        if(btnNam.isSelected()){
+                            preparedStatement.setString(3, btnNam.getText());
+                            gioiTinh = "Nam";
+                        }
+                        else{
+                            preparedStatement.setString(3, btnNu.getText());
+                            gioiTinh = "Nữ";
+                        }
                         preparedStatement.setString(4, txtDiaChi.getText());
                         preparedStatement.setString(5, cbChucVu.getSelectedItem().toString());
                         preparedStatement.setString(6, txtSoNgayLamViec.getText());
                 
                         double luong;
-                        if(cbChucVu.getSelectedItem().toString().equals("Giám đốc"))
+                        if(cbChucVu.getSelectedItem().toString().equals("Giám Đốc"))
                             luong = Double.parseDouble(txtSoNgayLamViec.getText()) * 1000000;
-                        else if(cbChucVu.getSelectedItem().toString().equals("Trưởng phòng"))
+                        else if(cbChucVu.getSelectedItem().toString().equals("Trưởng Phòng"))
                             luong = Double.parseDouble(txtSoNgayLamViec.getText()) * 500000;
                         else luong = Double.parseDouble(txtSoNgayLamViec.getText()) * 200000;
                         preparedStatement.setDouble(7, luong);
                         preparedStatement.executeUpdate();
                         model.addRow(new Object[]{
-                            txtInput.getText(), txtHoTen.getText(), txtNgaySinh.getText(), txtGioiTinh.getText(),
+                            txtInput.getText(), txtHoTen.getText(), txtNgaySinh.getText(), gioiTinh,
                             txtDiaChi.getText(), cbChucVu.getSelectedItem().toString(), txtSoNgayLamViec.getText(), luong
                         }); 
                    }
@@ -426,6 +450,8 @@ public class TimKiemCB extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.k33ptoo.components.KButton btnFind;
+    private javax.swing.JRadioButton btnNam;
+    private javax.swing.JRadioButton btnNu;
     private com.k33ptoo.components.KButton btnUpdate;
     private javax.swing.JComboBox<String> cbChucVu;
     private javax.swing.JLabel jLabel1;
@@ -445,7 +471,6 @@ public class TimKiemCB extends javax.swing.JPanel {
     private com.k33ptoo.components.KGradientPanel kGradientPanel2;
     private javax.swing.JTable tblShow;
     private javax.swing.JTextField txtDiaChi;
-    private javax.swing.JTextField txtGioiTinh;
     private javax.swing.JTextField txtHoTen;
     private javax.swing.JTextField txtInput;
     private javax.swing.JTextField txtNgaySinh;
