@@ -1,16 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package project.company.management.main;
 
-/**
- *
- * @author thinkpro
- */
+
 public class Main {
     public static void main(String[] args) {
-        
+        DangNhapFrame login = new DangNhapFrame();
+        login.setVisible(true);
     }
     
 }

@@ -11,13 +11,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import project.company.management.bean.DanhMucBean;
-import project.company.management.view.Checkin;
+import project.company.management.model.DanhMucBean;
+import project.company.management.view.ExportExcelPanel;
+
 import project.company.management.view.Home;
 import project.company.management.view.SuaCB;
 import project.company.management.view.ThemCB;
-import project.company.management.view.TimKiemCB;
+
 import project.company.management.view.XoaCB;
+import project.company.management.view.PDF;
+import project.company.management.view.LogOut;
 
 /**
  *
@@ -30,12 +33,12 @@ public class ChuyenManHinhController {
     
     private List<DanhMucBean> listItem = null;
 
-    public ChuyenManHinhController(JPanel jpnRoot) {
-        this.root = jpnRoot;
+    public ChuyenManHinhController(JPanel panelRoot) {
+        this.root = panelRoot;
     }
     
-   public void setView(JPanel jpnItem, JLabel jlbItem ) throws SQLException{
-       kindSelected ="Menu" ;
+   public void setView(JPanel panelItem, JLabel labelItem ) throws SQLException{
+//       kindSelected ="Menu" ;
 //       jpnItem.setBackground(new Color(255, 255, 255));
 //       jlbItem.setBackground(new Color(255, 255, 255));
       
@@ -60,15 +63,15 @@ public class ChuyenManHinhController {
    class LabelEvent implements MouseListener{
        
        private JPanel node ;
-       
+      
        private String kind ;
-       private JPanel jpnItem;
-       private JLabel jlbItem ;
+       private JPanel panel;
+       private JLabel label ;
 
-        public LabelEvent(String kind, JPanel jpnItem, JLabel jlbItem) {
+        public LabelEvent(String kind, JPanel panelItem, JLabel labelItem) {
             this.kind = kind;
-            this.jpnItem = jpnItem;
-            this.jlbItem = jlbItem;
+            this.panel = panelItem;
+            this.label = labelItem;
         }
        
        @Override
@@ -90,14 +93,17 @@ public class ChuyenManHinhController {
                 case "SuaCanBo":
                     node = new SuaCB();
                     break;
+                    
                 case "XoaCanBo":
                     node = new XoaCB();
                     break;
-                case "TimKiemCanBo":
-                    node = new TimKiemCB();
+                    
+                case "PDF":
+                   node = new PDF();
                     break;
-                case "Checkin":
-                    node = new Checkin();
+
+                case "LogOut":
+                    node = new LogOut();
                     break;
                 default:
                     break;
@@ -114,18 +120,18 @@ public class ChuyenManHinhController {
         public void mousePressed(MouseEvent e) {
             kindSelected = kind ;
 //            jpnItem.setBackground(new Color(96,100, 191));
-            jlbItem.setForeground(new Color(255, 102, 0));
+            label.setForeground(new Color(255,102,0));
         }
 
         @Override
         public void mouseReleased(MouseEvent e) {
-         jlbItem.setForeground(new Color(255, 255, 255));
+         label.setForeground(new Color(255, 255, 255));
         }
 
         @Override
         public void mouseEntered(MouseEvent e) {
-//            jpnItem.setBackground(new Color(96,100, 191));
-            jlbItem.setForeground(new Color(255, 255, 255));
+//            jpnItem.setBackground(new Color(96,100, 191));102, 204, 255
+            label.setForeground(new Color(255, 255, 255));
         }
 
         @Override
@@ -133,7 +139,7 @@ public class ChuyenManHinhController {
             if(!kindSelected.equalsIgnoreCase(kind))
             {
 //                jpnItem.setBackground(new Color(0,66,128));
-                jlbItem.setBackground(new Color(255, 255, 255));
+                label.setBackground(new Color(255, 255, 255));
             }
         }
        
