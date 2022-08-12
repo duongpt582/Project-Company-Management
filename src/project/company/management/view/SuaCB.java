@@ -444,7 +444,7 @@ public class SuaCB extends javax.swing.JPanel {
                         preparedStatement.executeUpdate();
                         model.addRow(new Object[]{
                             txtInput.getText(), txtHoTen.getText(), txtNgaySinh.getText(), gioiTinh,
-                            txtDiaChi.getText(), cbChucVu.getSelectedItem().toString(), txtSoNgayLamViec.getText(), luong
+                            txtDiaChi.getText(), cbChucVu.getSelectedItem().toString(), txtSoNgayLamViec.getText(), String.format("%,.2f", luong)
                         }); 
                    }
             } catch (SQLException ex) {
