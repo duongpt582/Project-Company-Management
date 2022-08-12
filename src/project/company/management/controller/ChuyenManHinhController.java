@@ -44,7 +44,7 @@ public class ChuyenManHinhController {
       
        root.removeAll();
        root.setLayout(new BorderLayout());
-       root.add(new Home());
+       root.add(new ExportExcelPanel());
        root.validate();
        root.repaint();
    }

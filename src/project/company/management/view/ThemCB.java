@@ -15,8 +15,8 @@ import javax.swing.table.DefaultTableModel;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
-import project.company.management.model.Customer;
-import project.company.management.database.DatabaseCanBo;
+import project.company.management.Customer;
+import project.company.management.DatabaseCanBo;
 
 public class ThemCB extends javax.swing.JPanel {
 
@@ -41,6 +41,8 @@ public class ThemCB extends javax.swing.JPanel {
 
     public ThemCB() {
         initComponents();
+        jlbChange.setVisible(false);
+        txtChange.setVisible(false);
         list = new ArrayList<>();
         model = (DefaultTableModel) jTable1.getModel();
         btgGroup = new ButtonGroup();
@@ -218,13 +220,12 @@ public class ThemCB extends javax.swing.JPanel {
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
                         .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jlbGender, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(48, 48, 48)
+                        .addComponent(jlbGender, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jRBNam)
                         .addGap(36, 36, 36)
-                        .addComponent(jRBNu)
-                        .addGap(70, 70, 70))
+                        .addComponent(jRBNu))
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
                         .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -363,7 +364,7 @@ public class ThemCB extends javax.swing.JPanel {
             diaChi = String.valueOf(txtAddress.getText());
             ngaySinh = String.valueOf(sDate);
             soNgayLamViec = Integer.parseInt(txtDay.getText());          
-            luong = Double.valueOf(soNgayLamViec * 1000000);
+            luong = soNgayLamViec * 1000000;
         }
         if (index == 2) {
             chucVu = (String) jComboBox1.getItemAt(index);
@@ -374,7 +375,7 @@ public class ThemCB extends javax.swing.JPanel {
             soNgayLamViec = Integer.parseInt(txtDay.getText());
             ngaySinh = String.valueOf(sDate);
             thuong = Double.parseDouble(txtChange.getText());
-            luong = Double.valueOf(soNgayLamViec * 500000 + thuong);
+            luong = soNgayLamViec * 500000 + thuong;
         }
         if (index == 3) {
             chucVu = (String) jComboBox1.getItemAt(index);
@@ -386,7 +387,7 @@ public class ThemCB extends javax.swing.JPanel {
             ngaySinh = String.valueOf(sDate);
             thuong = Double.parseDouble(txtChange.getText());
             
-            luong = Double.valueOf(soNgayLamViec * 200000 + thuong);
+            luong = soNgayLamViec * 200000 + thuong;
         }
         customer.setChuc_vu(chucVu);
         customer.setTen(ten);

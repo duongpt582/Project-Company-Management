@@ -1,5 +1,5 @@
 
-package project.company.management.database;
+package project.company.management;
 
 import java.sql.*;
 import java.sql.SQLException;
@@ -30,6 +30,8 @@ public class DatabaseCanBo {
             Class.forName("com.mysql.cj.jdbc.Driver");
             
             try {
+                
+
                 con = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_company", "root", "");
 
                 con = DriverManager.getConnection(
@@ -54,29 +56,6 @@ public class DatabaseCanBo {
             Logger.getLogger(DatabaseCanBo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public Connection createConnect2() {
-        try {
-            
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            try {
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_company", "root", "");
-
-                con = DriverManager.getConnection(
-                        "jdbc:mysql://localhost:3307/db_company",
-                        "root",
-                        "");
-
-                System.out.println("Database Connection Success");
-            } catch (SQLException ex) {
-                Logger.getLogger(DatabaseCanBo.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DatabaseCanBo.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return con;
-    }
     /**
      *  using Statement
      */
@@ -95,6 +74,21 @@ public class DatabaseCanBo {
         }
     }
 
+    /**
+     *  using Prepared Statements
+     */
+    public void insertData2() {
+        try {
+            String name = "Tu Ngoc Duc";
+            PreparedStatement preparedStatement = con.prepareStatement("INSERT INTO `can_bo`(?)");
+            preparedStatement.setString(1, name);
+            preparedStatement.execute();
+            preparedStatement.close();
+            System.out.println("Insertion Complete!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void insertData1(String ma, String ten, String ngaySinh, 
                     String gioiTinh, String diaChi, String chucVu, 
@@ -113,4 +107,7 @@ public class DatabaseCanBo {
 
 
     }
+    
+    
+    
 }
