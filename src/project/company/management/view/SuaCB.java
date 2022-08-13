@@ -71,7 +71,7 @@ public class SuaCB extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         btnUpdate = new com.k33ptoo.components.KButton();
         cbChucVu = new javax.swing.JComboBox<>();
-        btnUpdate1 = new com.k33ptoo.components.KButton();
+        btnRefresh = new com.k33ptoo.components.KButton();
         txtChange = new javax.swing.JTextField();
         jlbChange = new javax.swing.JLabel();
         btnNam = new javax.swing.JRadioButton();
@@ -203,11 +203,11 @@ public class SuaCB extends javax.swing.JPanel {
             }
         });
 
-        btnUpdate1.setText("Làm mới");
-        btnUpdate1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnUpdate1.addActionListener(new java.awt.event.ActionListener() {
+        btnRefresh.setText("Làm mới");
+        btnRefresh.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdate1ActionPerformed(evt);
+                btnRefreshActionPerformed(evt);
             }
         });
 
@@ -271,7 +271,7 @@ public class SuaCB extends javax.swing.JPanel {
                         .addGap(162, 162, 162)
                         .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(194, 194, 194)
-                        .addComponent(btnUpdate1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(kGradientPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 861, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -321,7 +321,7 @@ public class SuaCB extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUpdate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(90, 90, 90))
         );
 
@@ -512,7 +512,7 @@ public class SuaCB extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_cbChucVuActionPerformed
 
-    private void btnUpdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdate1ActionPerformed
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
         cbChucVu.setSelectedIndex(0);
         txtHoTen.setText("");
@@ -525,7 +525,7 @@ public class SuaCB extends javax.swing.JPanel {
         btnGr.add(btnNu);
         btnGr.clearSelection();
         txtInput.setEditable(true);
-    }//GEN-LAST:event_btnUpdate1ActionPerformed
+    }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void jlbChangeComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jlbChangeComponentHidden
         // TODO add your handling code here:
@@ -562,8 +562,8 @@ public class SuaCB extends javax.swing.JPanel {
     private com.k33ptoo.components.KButton btnFind;
     private javax.swing.JRadioButton btnNam;
     private javax.swing.JRadioButton btnNu;
+    private com.k33ptoo.components.KButton btnRefresh;
     private com.k33ptoo.components.KButton btnUpdate;
-    private com.k33ptoo.components.KButton btnUpdate1;
     private javax.swing.JComboBox<String> cbChucVu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
