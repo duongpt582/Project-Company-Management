@@ -21,65 +21,71 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="txtAddress" min="-2" pref="245" max="-2" attributes="0"/>
-                  <Component id="jlbAddress" min="-2" pref="184" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jlbName" min="-2" pref="184" max="-2" attributes="0"/>
-                          <Component id="txtName" min="-2" pref="245" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="txtAddress" min="-2" pref="245" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                              <Component id="jcbChucVu" min="-2" pref="245" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jlbAddress" min="-2" pref="184" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jlbGender" alignment="0" min="-2" pref="194" max="-2" attributes="0"/>
-                                  <Component id="txtGender" alignment="0" min="-2" pref="245" max="-2" attributes="0"/>
-                                  <Component id="jlbChucVu" alignment="0" min="-2" pref="184" max="-2" attributes="0"/>
-                                  <Component id="jcbChucVu" min="-2" pref="245" max="-2" attributes="0"/>
+                                  <Component id="jlbName" min="-2" pref="184" max="-2" attributes="0"/>
+                                  <Component id="txtName" min="-2" pref="245" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jlbDob" alignment="0" min="-2" pref="184" max="-2" attributes="0"/>
-                                          <Component id="txtDob" alignment="0" min="-2" pref="245" max="-2" attributes="0"/>
+                                          <Component id="jlbGender" alignment="0" min="-2" pref="194" max="-2" attributes="0"/>
+                                          <Component id="txtGender" alignment="0" min="-2" pref="245" max="-2" attributes="0"/>
+                                          <Component id="jlbChucVu" alignment="0" min="-2" pref="184" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jlbLuong" min="-2" pref="184" max="-2" attributes="0"/>
-                                          <Component id="txtLuong" min="-2" pref="245" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jlbDob" alignment="0" min="-2" pref="184" max="-2" attributes="0"/>
+                                                  <Component id="txtDob" alignment="0" min="-2" pref="245" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jlbLuong" min="-2" pref="184" max="-2" attributes="0"/>
+                                                  <Component id="txtLuong" min="-2" pref="245" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Component id="jlbNgayLamViec" min="-2" pref="184" max="-2" attributes="0"/>
+                                          <Component id="txtNgayLamViec" alignment="0" min="-2" pref="245" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="jlbNgayLamViec" min="-2" pref="184" max="-2" attributes="0"/>
-                                  <Component id="txtNgayLamViec" alignment="0" min="-2" pref="245" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                                      <Component id="jlbID" min="-2" pref="92" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="txtID" min="-2" pref="201" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                      <Component id="jbtSearch" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                              <Component id="jlbID" min="-2" pref="92" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="txtID" min="-2" pref="201" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="jbtSearch" min="-2" max="-2" attributes="0"/>
+                              <Component id="jbtPDF" min="-2" pref="171" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="jbtClear" min="-2" pref="113" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jbtPDF" min="-2" pref="135" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-                      <Component id="jbtClear" min="-2" pref="106" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="534" max="-2" attributes="0"/>
+                      <Component id="jButton1" min="-2" pref="151" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="61" max="32767" attributes="0"/>
-          </Group>
-          <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="534" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="123" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -115,18 +121,18 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtAddress" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="jcbChucVu" alignment="3" pref="35" max="32767" attributes="0"/>
+                  <Component id="jcbChucVu" alignment="3" max="32767" attributes="0"/>
                   <Component id="txtNgayLamViec" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jbtPDF" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                  <Component id="jbtClear" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                  <Component id="jbtPDF" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jbtClear" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="375" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="40" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jButton1" min="-2" pref="46" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -343,6 +349,9 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/project/company/management/icon/pdf.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t PDF"/>
       </Properties>
       <Events>
@@ -372,18 +381,8 @@
       <SubComponents>
         <Component class="javax.swing.JTable" name="jTable1">
           <Properties>
-            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="9" rowCount="0">
-                <Column editable="true" title="STT" type="java.lang.Integer"/>
-                <Column editable="true" title="ID" type="java.lang.String"/>
-                <Column editable="true" title="H&#x1ecd; t&#xea;n" type="java.lang.String"/>
-                <Column editable="true" title="Ng&#xe0;y sinh" type="java.lang.Object"/>
-                <Column editable="true" title="Gi&#x1edb;i t&#xed;nh" type="java.lang.String"/>
-                <Column editable="true" title="&#x110;&#x1ecb;a ch&#x1ec9;" type="java.lang.String"/>
-                <Column editable="true" title="Ch&#x1ee9;c v&#x1ee5;" type="java.lang.String"/>
-                <Column editable="true" title="S&#x1ed1; ng&#xe0;y l&#xe0;m vi&#x1ec7;c" type="java.lang.Integer"/>
-                <Column editable="true" title="L&#x1b0;&#x1a1;ng" type="java.lang.Double"/>
-              </Table>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.table.DefaultTableModel(&#xa;)" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -396,6 +395,9 @@
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/project/company/management/icon/xls.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t excel"/>
       </Properties>

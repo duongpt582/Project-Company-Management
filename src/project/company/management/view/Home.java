@@ -15,20 +15,18 @@ public final class Home extends javax.swing.JPanel {
     public Home() throws SQLException {
         initComponents();
         
-        
-        showData();
-        
-    }
-    public void showData() {
-        String id,  hoTen, diaChi, gioiTinh, ngaySinh;
-        int soNgayLam;
-        
         model = (DefaultTableModel) tableInfomation.getModel();
         
         //Tạo ra các cột với các tiêu đề
         model.setColumnIdentifiers(new Object[]{
                 "STT", "ID","Chức Vụ", "Tên", "Ngày sinh", "Địa chỉ", "Giới Tính" ,"Số Ngày Làm Việc", "Lương"
         });
+        showData();
+        
+    }
+    public void showData() {
+    String id,  hoTen, diaChi, gioiTinh, ngaySinh;
+    int soNgayLam;
 
     try {
 
@@ -43,11 +41,12 @@ public final class Home extends javax.swing.JPanel {
             statement = con.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM can_bo");
 
-            int i = 0;
+            int i = 1;
             while (rs.next()) {
                 id = rs.getString(2);
                 hoTen = rs.getString("ho_ten");
                 ngaySinh = rs.getString("ngay_sinh");
+                
                 gioiTinh = rs.getString(5);
                 diaChi = rs.getString(6);
                 String chucVu = rs.getString(7);
