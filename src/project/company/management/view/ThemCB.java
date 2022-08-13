@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
-import project.company.management.model.Customer;
+import project.company.management.Customer;
 import project.company.management.database.DatabaseCanBo;
 
 public class ThemCB extends javax.swing.JPanel {
@@ -50,15 +50,20 @@ public class ThemCB extends javax.swing.JPanel {
         btgGroup.add(jRBNam);
         
         UtilDateModel model1 = new UtilDateModel();
+        model1.setDate(2002, 8, 24);
+        model1.setSelected(true);
         JDatePanelImpl datePanel = new JDatePanelImpl(model1, System.getProperties());
         JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
         add_date_panel.add(datePicker);
   
+      
+        
         datePicker.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Date selectedDate = (Date) datePicker.getModel().getValue();
                 sDate = convertUtilToSql(selectedDate);
+              
                 System.out.println(sDate);
             }
         });

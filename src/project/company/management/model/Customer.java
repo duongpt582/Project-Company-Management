@@ -1,4 +1,4 @@
-package project.company.management.model;
+package project.company.management;
 
 import java.io.*;
 import java.time.LocalDateTime;
