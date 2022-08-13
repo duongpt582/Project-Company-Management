@@ -49,7 +49,7 @@ public class MainFrame extends javax.swing.JFrame {
         controller.setView(panelSua, labelSua);
         controller.setView(panelXoa, labelXoa);
         controller.setView(panelPDF, labelPDF);
-        controller.setView(panelLogOut, labelLogOut);
+        controller.setView(panelExportExcelPanel, labelExportExcelPanel);
         
         
         List<DanhMucBean> listItem = new ArrayList<>();
@@ -58,7 +58,7 @@ public class MainFrame extends javax.swing.JFrame {
         listItem.add(new DanhMucBean("SuaCanBo", panelSua, labelSua));
         listItem.add(new DanhMucBean("XoaCanBo", panelXoa, labelXoa));
         listItem.add(new DanhMucBean("PDF", panelPDF, labelPDF));
-        listItem.add(new DanhMucBean("LogOut", panelLogOut, labelLogOut));
+        listItem.add(new DanhMucBean("ExportExcelPanel", panelExportExcelPanel, labelExportExcelPanel));
         
         controller.setEvent(listItem);
         
@@ -86,8 +86,8 @@ public class MainFrame extends javax.swing.JFrame {
         labelXoa = new javax.swing.JLabel();
         panelPDF = new javax.swing.JPanel();
         labelPDF = new javax.swing.JLabel();
-        panelLogOut = new javax.swing.JPanel();
-        labelLogOut = new javax.swing.JLabel();
+        panelExportExcelPanel = new javax.swing.JPanel();
+        labelExportExcelPanel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jpnBar = new javax.swing.JPanel();
@@ -250,29 +250,29 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panelLogOut.setBackground(new java.awt.Color(0, 66, 128));
-        panelLogOut.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.black, null));
+        panelExportExcelPanel.setBackground(new java.awt.Color(0, 66, 128));
+        panelExportExcelPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.black, null));
 
-        labelLogOut.setBackground(new java.awt.Color(0, 66, 128));
-        labelLogOut.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        labelLogOut.setForeground(new java.awt.Color(255, 255, 255));
-        labelLogOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/company/management/icon/log-out.png"))); // NOI18N
-        labelLogOut.setText("Đăng xuất");
+        labelExportExcelPanel.setBackground(new java.awt.Color(0, 66, 128));
+        labelExportExcelPanel.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        labelExportExcelPanel.setForeground(new java.awt.Color(255, 255, 255));
+        labelExportExcelPanel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/company/management/icon/excel-64.png"))); // NOI18N
+        labelExportExcelPanel.setText("Xuất Excel");
 
-        javax.swing.GroupLayout panelLogOutLayout = new javax.swing.GroupLayout(panelLogOut);
-        panelLogOut.setLayout(panelLogOutLayout);
-        panelLogOutLayout.setHorizontalGroup(
-            panelLogOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLogOutLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelExportExcelPanelLayout = new javax.swing.GroupLayout(panelExportExcelPanel);
+        panelExportExcelPanel.setLayout(panelExportExcelPanelLayout);
+        panelExportExcelPanelLayout.setHorizontalGroup(
+            panelExportExcelPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelExportExcelPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelExportExcelPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        panelLogOutLayout.setVerticalGroup(
-            panelLogOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLogOutLayout.createSequentialGroup()
+        panelExportExcelPanelLayout.setVerticalGroup(
+            panelExportExcelPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelExportExcelPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelLogOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelExportExcelPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -282,7 +282,7 @@ public class MainFrame extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(panelLogOut, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelExportExcelPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelPDF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelHome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelThem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -303,7 +303,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelPDF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(panelExportExcelPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jButton1.setText("jButton1");
@@ -456,14 +456,14 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jpnBar;
+    private javax.swing.JLabel labelExportExcelPanel;
     private javax.swing.JLabel labelHome;
-    private javax.swing.JLabel labelLogOut;
     private javax.swing.JLabel labelPDF;
     private javax.swing.JLabel labelSua;
     private javax.swing.JLabel labelThem;
     private javax.swing.JLabel labelXoa;
+    private javax.swing.JPanel panelExportExcelPanel;
     private javax.swing.JPanel panelHome;
-    private javax.swing.JPanel panelLogOut;
     private javax.swing.JPanel panelMenu;
     private javax.swing.JPanel panelPDF;
     private javax.swing.JPanel panelSua;

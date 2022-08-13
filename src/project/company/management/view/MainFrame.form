@@ -133,7 +133,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="panelLogOut" alignment="0" max="32767" attributes="0"/>
+                          <Component id="panelExportExcelPanel" alignment="0" max="32767" attributes="0"/>
                           <Component id="panelPDF" alignment="0" max="32767" attributes="0"/>
                           <Component id="panelHome" alignment="0" max="32767" attributes="0"/>
                           <Component id="panelThem" alignment="0" max="32767" attributes="0"/>
@@ -157,7 +157,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="panelPDF" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="panelLogOut" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelExportExcelPanel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -434,7 +434,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="panelLogOut">
+            <Container class="javax.swing.JPanel" name="panelExportExcelPanel">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="80" green="42" red="0" type="rgb"/>
@@ -453,7 +453,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="labelLogOut" min="-2" pref="222" max="-2" attributes="0"/>
+                          <Component id="labelExportExcelPanel" min="-2" pref="222" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -462,14 +462,14 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="labelLogOut" max="32767" attributes="0"/>
+                          <Component id="labelExportExcelPanel" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="labelLogOut">
+                <Component class="javax.swing.JLabel" name="labelExportExcelPanel">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="80" green="42" red="0" type="rgb"/>
@@ -481,9 +481,9 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/project/company/management/icon/log-out.png"/>
+                      <Image iconType="3" name="/project/company/management/icon/excel-64.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng xu&#x1ea5;t"/>
+                    <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t Excel"/>
                   </Properties>
                 </Component>
               </SubComponents>
