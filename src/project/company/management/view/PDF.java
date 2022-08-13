@@ -25,6 +25,7 @@ import project.company.management.database.DatabaseCanBo;
 import java.io.FileNotFoundException;
 import com.itextpdf.text.DocumentException;
 import java.io.IOException;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -52,6 +53,7 @@ public class PDF extends javax.swing.JPanel {
     int soNgayLam;
 
     try {
+  
 
         Class.forName("com.mysql.cj.jdbc.Driver");
 
@@ -398,54 +400,64 @@ public class PDF extends javax.swing.JPanel {
         Document doc = new Document();
         
         try{
-            // khởi tạo một PdfWriter truyền vào document và FileOutputStream
-            PdfWriter.getInstance(doc, new FileOutputStream(path+""+num+".pdf"));
-            num++;
-             // mở file để thực hiện viết
-            doc.open();
-            // thêm nội dung sử dụng add function
-            Paragraph paragraph1 = new Paragraph("                                  He Thong Quan Ly Can Bo Cong Ty\\n");
-            doc.add(paragraph1);
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.showSaveDialog(this);
+            File saveFile = fileChooser.getSelectedFile();
             
-            Paragraph paragraph2 = new Paragraph("********************************************************************************************");
-            doc.add(paragraph2);
+            if (saveFile != null ) {
+                saveFile = new File(saveFile.toString() + ".pdf");
+                
+                // khởi tạo một PdfWriter truyền vào document và FileOutputStream
+                PdfWriter.getInstance(doc, new FileOutputStream(new File(saveFile.toString())));
+                num++;
+                 // mở file để thực hiện viết
+                doc.open();
+                // thêm nội dung sử dụng add function
+                Paragraph paragraph1 = new Paragraph("                                  He Thong Quan Ly Can Bo Cong Ty\n");
+                doc.add(paragraph1);
+
+                Paragraph paragraph2 = new Paragraph("********************************************************************************************");
+                doc.add(paragraph2);
+
+                Paragraph paragraph3 = new Paragraph("""
+                                                     \tThong tin can bo chi tiet: 
+                                                     Ma can bo: """+idNum+"\nHo va ten: "+ name+"\nGioi tinh: "+gioiTinh+"\nNgay Sinh: "+ ngaySinh+
+                        "\nDia chi: "+diaChi+"\nSo ngay lam viec: "+ngayLam+"\nChuc vu trong cong ty: "+ chucVu+"\nLuong: "+Luong);
+                doc.add(paragraph3);
+
+                Paragraph paragraph4 = new Paragraph("********************************************************************************************");
+                doc.add(paragraph4);
+
+                Paragraph paragraph5 = new Paragraph("Cam on ban da su dung dich vu!");
+                doc.add(paragraph5);
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Lỗi tạo file!!!");
+            }
             
-            Paragraph paragraph3 = new Paragraph("""
-                                                 \tThong tin can bo chi tiet: 
-                                                 Ma can bo: """+idNum+"\nHo va ten: "+ name+"\nGioi tinh: "+gioiTinh+"\nNgay Sinh: "+ ngaySinh+
-                    "\nDia chi: "+diaChi+"\nSo ngay lam viec: "+ngayLam+"\nChuc vu trong cong ty: "+ chucVu+"\nLuong: "+Luong);
-            doc.add(paragraph3);
+            int a = JOptionPane.showConfirmDialog(null, "Do you want to print customer detail","Select",JOptionPane.YES_NO_OPTION);
+            if (a==0)  {
+                try 
+                {
+                    if(!new File(saveFile.toString()).exists()) {
+                        System.err.println("File is not Exists");
+                    } else {
+                        Process p = Runtime.getRuntime().exec("File"+num+".pdf");// open a new notepad
+                    }
+                } catch (IOException e) 
+                {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+
+            }
             
-            Paragraph paragraph4 = new Paragraph("********************************************************************************************");
-            doc.add(paragraph4);
-            
-            Paragraph paragraph5 = new Paragraph("Cam on ban da su dung dich vu!");
-            doc.add(paragraph5);
         }catch (DocumentException | FileNotFoundException e) {
             e.printStackTrace();
         }
         // dong file
         doc.close();
         
-        int a = JOptionPane.showConfirmDialog(null, "Do you want to print customer detail","Select",JOptionPane.YES_NO_OPTION);
-        if (a==0) 
-        {
-            try 
-            {
-                if((new File("File"+num+".pdf")).exists())
-                {
-                    Process p = Runtime.getRuntime().exec("File"+num+".pdf");// open a new notepad
-                }
-                else
-                {
-                    System.err.println("File is not Exists");
-                }
-            } catch (IOException e) 
-            {
-                JOptionPane.showMessageDialog(null, e);
-            }
-            
-        }
+        
         
     }//GEN-LAST:event_jbtPDFActionPerformed
 
