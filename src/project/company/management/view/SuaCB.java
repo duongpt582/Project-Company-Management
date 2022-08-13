@@ -133,7 +133,9 @@ public class SuaCB extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblShow);
         if (tblShow.getColumnModel().getColumnCount() > 0) {
             tblShow.getColumnModel().getColumn(0).setPreferredWidth(50);
-            tblShow.getColumnModel().getColumn(7).setPreferredWidth(40);
+            tblShow.getColumnModel().getColumn(3).setPreferredWidth(40);
+            tblShow.getColumnModel().getColumn(6).setPreferredWidth(60);
+            tblShow.getColumnModel().getColumn(7).setPreferredWidth(70);
         }
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 20)); // NOI18N
@@ -372,7 +374,7 @@ public class SuaCB extends javax.swing.JPanel {
                         txtChange.setText(String.valueOf(luong - soNgayLamViec * 200000));
                     
                     model.addRow(new Object[]{
-                        txtInput.getText(), hoTen, ngaySinh, gioiTinh, diaChi, chucVu, soNgayLamViec, luong
+                        txtInput.getText(), hoTen, ngaySinh, gioiTinh, diaChi, chucVu, soNgayLamViec, String.format("%,.2f", luong)
                     });
                     txtInput.setEditable(false);
                 }
@@ -447,7 +449,7 @@ public class SuaCB extends javax.swing.JPanel {
                         preparedStatement.executeUpdate();
                         model.addRow(new Object[]{
                             txtInput.getText(), txtHoTen.getText(), txtNgaySinh.getText(), gioiTinh,
-                            txtDiaChi.getText(), cbChucVu.getSelectedItem().toString(), txtSoNgayLamViec.getText(), luong
+                            txtDiaChi.getText(), cbChucVu.getSelectedItem().toString(), txtSoNgayLamViec.getText(), String.format("%,.2f", luong)
                         });
                         JOptionPane.showMessageDialog(null, "Sửa thành công!");
                    }
