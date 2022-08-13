@@ -28,19 +28,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 
 public class ExportExcelPanel extends javax.swing.JPanel {
-    
-    public static final int COT_STT                 = 0;
-    public static final int COT_MA_CAN_BO           = 1;
-    public static final int COT_CHUC_VU             = 2;
-    public static final int COT_HO_TEN              = 3;
-    public static final int COT_NGAY_SINH           = 4;
-    public static final int COT_NOI_SINH            = 5;
-    public static final int COT_GIOI_TINH           = 6;
-    public static final int COT_SO_NGAY_DI_LAM      = 7;
-    public static final int COT_LUONG               = 8;
-    private static CellStyle cellStyleFormatNumber = null;
-    
-    
+   
     Connection connection;
     DatabaseCanBo dbCanBo = new DatabaseCanBo();
     DefaultTableModel model;
@@ -217,7 +205,7 @@ public class ExportExcelPanel extends javax.swing.JPanel {
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(40, Short.MAX_VALUE))
