@@ -76,44 +76,49 @@ public class ChuyenManHinhController {
        
        @Override
         public void mouseClicked(MouseEvent e) {
-            switch (kind) {
-                case "Home":
-                {
-                    try {
-                        node = new Home();
-                    } catch (SQLException ex) {
-                        Logger.getLogger(ChuyenManHinhController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-                    break;
-
-                case "ThemCanBo":
-                    node = new ThemCB();
-                    break;
-                case "SuaCanBo":
-                    node = new SuaCB();
-                    break;
-                    
-                case "XoaCanBo":
-                    node = new XoaCB();
-                    break;
-                    
-                case "PDF":
-                   node = new PDF();
-                    break;
-
-                case "LogOut":
-                    node = new LogOut();
-                    break;
-                default:
-                    break;
-            }
-            root.removeAll();
-            root.setLayout(new BorderLayout());
-            root.add(node);
-            root.validate();
-            root.repaint();
+           try {
+               switch (kind) {
+                   case "Home":
+                   {
+                       try {
+                           node = new Home();
+                       } catch (SQLException ex) {
+                           Logger.getLogger(ChuyenManHinhController.class.getName()).log(Level.SEVERE, null, ex);
+                       }
+                   }
+                   break;
+                   
+                   case "ThemCanBo":
+                       node = new ThemCB();
+                       break;
+                   case "SuaCanBo":
+                       node = new SuaCB();
+                       break;
+                       
+                   case "XoaCanBo":
+                       node = new XoaCB();
+                       break;
+                       
+                   case "PDF":
+                       node = new PDF();
+                       break;
+                       
+                       
+                   case "ExportExcelPanel":
+                       node = new ExportExcelPanel();
+                       break;
+                   default:
+                       break;
+               }
+               root.removeAll();
+               root.setLayout(new BorderLayout());
+               root.add(node);
+               root.validate();
+               root.repaint();
 //            setChangeBackground(kind);
+           } catch (SQLException ex) {
+               Logger.getLogger(ChuyenManHinhController.class.getName()).log(Level.SEVERE, null, ex);
+           }
         }
 
         @Override
