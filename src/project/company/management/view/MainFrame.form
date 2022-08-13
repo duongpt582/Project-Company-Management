@@ -48,10 +48,9 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jpnMenu" min="-2" max="-2" attributes="0"/>
+              <Component id="panelMenu" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel2" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -60,7 +59,7 @@
           <Group type="102" alignment="1" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jPanel2" max="32767" attributes="0"/>
-                  <Component id="jpnMenu" max="32767" attributes="0"/>
+                  <Component id="panelMenu" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
@@ -68,14 +67,14 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jpnMenu">
+    <Container class="javax.swing.JPanel" name="panelMenu">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="33" red="0" type="rgb"/>
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jpnMenu.paintComponents(g);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="panelMenu.paintComponents(g);"/>
       </AuxValues>
 
       <Layout>
@@ -134,12 +133,12 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jpnLogOut" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jpnPDF" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jpnHome" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jpnThem" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jpnSua" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jpnXoa" alignment="0" max="32767" attributes="0"/>
+                          <Component id="panelExportExcelPanel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="panelPDF" alignment="0" max="32767" attributes="0"/>
+                          <Component id="panelHome" alignment="0" max="32767" attributes="0"/>
+                          <Component id="panelThem" alignment="0" max="32767" attributes="0"/>
+                          <Component id="panelSua" alignment="0" max="32767" attributes="0"/>
+                          <Component id="panelXoa" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -148,23 +147,23 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jpnHome" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelHome" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jpnThem" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelThem" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jpnSua" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelSua" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jpnXoa" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelXoa" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jpnPDF" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelPDF" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jpnLogOut" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelExportExcelPanel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="jpnHome">
+            <Container class="javax.swing.JPanel" name="panelHome">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="80" green="42" red="0" type="rgb"/>
@@ -186,7 +185,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlbHome" max="32767" attributes="0"/>
+                          <Component id="labelHome" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -194,14 +193,14 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlbHome" max="32767" attributes="0"/>
+                          <Component id="labelHome" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jlbHome">
+                <Component class="javax.swing.JLabel" name="labelHome">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="80" green="42" red="0" type="rgb"/>
@@ -221,7 +220,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jpnThem">
+            <Container class="javax.swing.JPanel" name="panelThem">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="80" green="42" red="0" type="rgb"/>
@@ -240,7 +239,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlbThem" min="-2" pref="251" max="-2" attributes="0"/>
+                          <Component id="labelThem" min="-2" pref="251" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -249,14 +248,14 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlbThem" max="32767" attributes="0"/>
+                          <Component id="labelThem" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jlbThem">
+                <Component class="javax.swing.JLabel" name="labelThem">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="80" green="42" red="0" type="rgb"/>
@@ -275,7 +274,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jpnSua">
+            <Container class="javax.swing.JPanel" name="panelSua">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="80" green="42" red="0" type="rgb"/>
@@ -294,7 +293,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlbSua" max="32767" attributes="0"/>
+                          <Component id="labelSua" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -302,14 +301,14 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlbSua" max="32767" attributes="0"/>
+                          <Component id="labelSua" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jlbSua">
+                <Component class="javax.swing.JLabel" name="labelSua">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="80" green="42" red="0" type="rgb"/>
@@ -328,7 +327,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jpnXoa">
+            <Container class="javax.swing.JPanel" name="panelXoa">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="80" green="42" red="0" type="rgb"/>
@@ -347,7 +346,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlbXoa" max="32767" attributes="0"/>
+                          <Component id="labelXoa" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -355,14 +354,14 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlbXoa" max="32767" attributes="0"/>
+                          <Component id="labelXoa" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jlbXoa">
+                <Component class="javax.swing.JLabel" name="labelXoa">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="80" green="42" red="0" type="rgb"/>
@@ -381,7 +380,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jpnPDF">
+            <Container class="javax.swing.JPanel" name="panelPDF">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="80" green="42" red="0" type="rgb"/>
@@ -400,7 +399,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlbPDF" min="-2" pref="238" max="-2" attributes="0"/>
+                          <Component id="labelPDF" min="-2" pref="238" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -409,14 +408,14 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlbPDF" max="32767" attributes="0"/>
+                          <Component id="labelPDF" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jlbPDF">
+                <Component class="javax.swing.JLabel" name="labelPDF">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="80" green="42" red="0" type="rgb"/>
@@ -435,7 +434,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jpnLogOut">
+            <Container class="javax.swing.JPanel" name="panelExportExcelPanel">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="80" green="42" red="0" type="rgb"/>
@@ -454,7 +453,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlbLogOut" min="-2" pref="222" max="-2" attributes="0"/>
+                          <Component id="labelExportExcelPanel" min="-2" pref="222" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -463,14 +462,14 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlbLogOut" max="32767" attributes="0"/>
+                          <Component id="labelExportExcelPanel" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jlbLogOut">
+                <Component class="javax.swing.JLabel" name="labelExportExcelPanel">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="80" green="42" red="0" type="rgb"/>
@@ -482,9 +481,9 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/project/company/management/icon/log-out.png"/>
+                      <Image iconType="3" name="/project/company/management/icon/excel-64.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng xu&#x1ea5;t"/>
+                    <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t Excel"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -508,12 +507,12 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jpnBar" min="-2" max="-2" attributes="0"/>
-                      <Component id="jpnView" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelView" max="32767" attributes="0"/>
+                      <Component id="jpnBar" alignment="0" max="32767" attributes="0"/>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -522,7 +521,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jpnBar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jpnView" max="32767" attributes="0"/>
+                  <Component id="panelView" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -545,7 +544,7 @@
                       <Component id="jLabel2" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="searchText1" min="-2" pref="840" max="-2" attributes="0"/>
-                      <EmptySpace pref="40" max="32767" attributes="0"/>
+                      <EmptySpace pref="266" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -568,7 +567,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jpnView">
+        <Container class="javax.swing.JPanel" name="panelView">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="eb" green="eb" red="eb" type="rgb"/>
@@ -586,7 +585,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="954" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
