@@ -1,16 +1,29 @@
 
 package project.company.management.view;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
 
 public class SuaCB extends javax.swing.JPanel {
-
+    java.sql.Date sDate;
+    UtilDateModel model1 = new UtilDateModel();
+    JDatePanelImpl datePanel = new JDatePanelImpl(model1, System.getProperties());
+    JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
+        
     
     public SuaCB() {
         initComponents();
@@ -19,6 +32,16 @@ public class SuaCB extends javax.swing.JPanel {
         ButtonGroup btnGr = new ButtonGroup();
         btnGr.add(btnNam);
         btnGr.add(btnNu);
+        pnDate.add(datePicker);
+        
+        datePicker.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                java.util.Date selectedDate = (java.util.Date) datePicker.getModel().getValue();
+                sDate = convertUtilToSql(selectedDate);
+                System.out.println(sDate);
+            }
+        });
     }
 
     
@@ -38,7 +61,6 @@ public class SuaCB extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtHoTen = new javax.swing.JTextField();
-        txtNgaySinh = new javax.swing.JTextField();
         txtDiaChi = new javax.swing.JTextField();
         txtSoNgayLamViec = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -54,6 +76,7 @@ public class SuaCB extends javax.swing.JPanel {
         jlbChange = new javax.swing.JLabel();
         btnNam = new javax.swing.JRadioButton();
         btnNu = new javax.swing.JRadioButton();
+        pnDate = new javax.swing.JPanel();
 
         jLabel10.setText("jLabel10");
 
@@ -143,8 +166,6 @@ public class SuaCB extends javax.swing.JPanel {
 
         txtHoTen.setPreferredSize(new java.awt.Dimension(175, 40));
 
-        txtNgaySinh.setPreferredSize(new java.awt.Dimension(175, 40));
-
         txtDiaChi.setPreferredSize(new java.awt.Dimension(175, 40));
 
         txtSoNgayLamViec.setPreferredSize(new java.awt.Dimension(175, 40));
@@ -206,14 +227,12 @@ public class SuaCB extends javax.swing.JPanel {
         btnNu.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnNu.setText("Nữ");
 
+        pnDate.setLayout(new java.awt.BorderLayout());
+
         javax.swing.GroupLayout kGradientPanel2Layout = new javax.swing.GroupLayout(kGradientPanel2);
         kGradientPanel2.setLayout(kGradientPanel2Layout);
         kGradientPanel2Layout.setHorizontalGroup(
             kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(kGradientPanel2Layout.createSequentialGroup()
                 .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(kGradientPanel2Layout.createSequentialGroup()
@@ -238,19 +257,16 @@ public class SuaCB extends javax.swing.JPanel {
                                     .addGroup(kGradientPanel2Layout.createSequentialGroup()
                                         .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel6)
-                                            .addComponent(txtNgaySinh, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                                             .addComponent(jLabel9)
-                                            .addComponent(cbChucVu, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(pnDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(cbChucVu, 0, 197, Short.MAX_VALUE)
                                             .addComponent(txtChange, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(84, 84, 84)
+                                        .addGap(66, 66, 66)
                                         .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel11)
+                                            .addComponent(btnNam)
                                             .addComponent(jLabel7)
-                                            .addComponent(txtSoNgayLamViec, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(kGradientPanel2Layout.createSequentialGroup()
-                                                .addComponent(btnNam)
-                                                .addGap(65, 65, 65)
-                                                .addComponent(btnNu))))))))
+                                            .addComponent(jLabel11)
+                                            .addComponent(txtSoNgayLamViec, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                     .addGroup(kGradientPanel2Layout.createSequentialGroup()
                         .addGap(162, 162, 162)
                         .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -260,6 +276,12 @@ public class SuaCB extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 861, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnNu)
+                    .addComponent(jLabel3))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         kGradientPanel2Layout.setVerticalGroup(
             kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,9 +300,9 @@ public class SuaCB extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNam)
-                    .addComponent(btnNu))
+                    .addComponent(btnNu)
+                    .addComponent(pnDate, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -351,7 +373,7 @@ public class SuaCB extends javax.swing.JPanel {
                     txtHoTen.setText(hoTen);
                     
                     String ngaySinh = String.valueOf(rs.getDate("ngay_sinh"));
-                    txtNgaySinh.setText(ngaySinh);
+                    model1.setValue(rs.getDate("ngay_sinh"));
                     
                     String gioiTinh = rs.getString("Gioi_tinh");
                     if(gioiTinh.equals("Nam")) btnNam.doClick();
@@ -388,7 +410,6 @@ public class SuaCB extends javax.swing.JPanel {
             Logger.getLogger(SuaCB.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        txtNgaySinh.setEditable(false);
     }//GEN-LAST:event_btnFindActionPerformed
 
     private void txtInputKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtInputKeyPressed
@@ -411,7 +432,6 @@ public class SuaCB extends javax.swing.JPanel {
                         + "dia_chi=?, chuc_vu=?, so_ngay_lam_viec=?, luong=? WHERE ID=?");
 
                 if(txtHoTen.getText().equals("") ||
-                   txtNgaySinh.getText().equals("") || 
                    txtDiaChi.getText().equals("") || 
                    cbChucVu.getSelectedIndex() == 0 || 
                    txtSoNgayLamViec.getText().equals("") ||
@@ -425,7 +445,7 @@ public class SuaCB extends javax.swing.JPanel {
                     
                         preparedStatement.setString(8, txtInput.getText());
                         preparedStatement.setString(1, txtHoTen.getText());
-                        preparedStatement.setString(2, txtNgaySinh.getText());
+                        preparedStatement.setDate(2, sDate);
                         if(btnNam.isSelected()){
                             preparedStatement.setString(3, btnNam.getText());
                             gioiTinh = btnNam.getText();
@@ -448,7 +468,7 @@ public class SuaCB extends javax.swing.JPanel {
                         preparedStatement.setDouble(7, luong);
                         preparedStatement.executeUpdate();
                         model.addRow(new Object[]{
-                            txtInput.getText(), txtHoTen.getText(), txtNgaySinh.getText(), gioiTinh,
+                            txtInput.getText(), txtHoTen.getText(), sDate, gioiTinh,
                             txtDiaChi.getText(), cbChucVu.getSelectedItem().toString(), txtSoNgayLamViec.getText(), String.format("%,.2f", luong)
                         });
                         JOptionPane.showMessageDialog(null, "Sửa thành công!");
@@ -496,7 +516,7 @@ public class SuaCB extends javax.swing.JPanel {
         cbChucVu.setSelectedIndex(0);
         txtHoTen.setText("");
         txtSoNgayLamViec.setText("");
-        txtNgaySinh.setText("");
+        datePicker.getModel().setValue(null);
         txtInput.setText("");
         txtDiaChi.setText("");
         ButtonGroup btnGr = new ButtonGroup();
@@ -510,6 +530,32 @@ public class SuaCB extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jlbChangeComponentHidden
 
+    private static java.sql.Date convertUtilToSql(java.util.Date uDate) {
+        java.sql.Date sDate = new java.sql.Date(uDate.getTime());
+        return sDate;
+    }
+    
+    public class DateLabelFormatter extends JFormattedTextField.AbstractFormatter {
+
+        private String datePattern = "yyyy-MM-dd";
+        private SimpleDateFormat dateFormatter = new SimpleDateFormat(datePattern);
+
+        @Override
+        public Object stringToValue(String text) throws ParseException {
+            return dateFormatter.parseObject(text);
+        }
+
+        @Override
+        public String valueToString(Object value) throws ParseException {
+            if (value != null) {
+                Calendar cal = (Calendar) value;
+                return dateFormatter.format(cal.getTime());
+            }
+
+            return "";
+        }
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.k33ptoo.components.KButton btnFind;
@@ -533,12 +579,12 @@ public class SuaCB extends javax.swing.JPanel {
     private javax.swing.JLabel jlbChange;
     private com.k33ptoo.components.KGradientPanel kGradientPanel1;
     private com.k33ptoo.components.KGradientPanel kGradientPanel2;
+    private javax.swing.JPanel pnDate;
     private javax.swing.JTable tblShow;
     private javax.swing.JTextField txtChange;
     private javax.swing.JTextField txtDiaChi;
     private javax.swing.JTextField txtHoTen;
     private javax.swing.JTextField txtInput;
-    private javax.swing.JTextField txtNgaySinh;
     private javax.swing.JTextField txtSoNgayLamViec;
     // End of variables declaration//GEN-END:variables
 }
