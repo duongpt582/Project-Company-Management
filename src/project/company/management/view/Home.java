@@ -51,10 +51,10 @@ public final class Home extends javax.swing.JPanel {
                 diaChi = rs.getString(6);
                 String chucVu = rs.getString(7);
                 String soNgayLamViec = rs.getString(8);
-                String luong = rs.getString(9);
+                double luong = rs.getDouble(9);
 
                 model.addRow(new Object[]{
-                        i++, id, chucVu, hoTen, ngaySinh, diaChi, gioiTinh, soNgayLamViec, luong
+                        i++, id, chucVu, hoTen, ngaySinh, diaChi, gioiTinh, soNgayLamViec, String.format("%,.2f", luong)
                 });
             }
 
@@ -76,7 +76,6 @@ public final class Home extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         kGradientPanel1 = new com.k33ptoo.components.KGradientPanel();
-        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableInfomation = new javax.swing.JTable();
 
@@ -96,8 +95,6 @@ public final class Home extends javax.swing.JPanel {
         kGradientPanel1.setkEndColor(new java.awt.Color(51, 204, 255));
         kGradientPanel1.setkStartColor(new java.awt.Color(204, 255, 102));
 
-        jButton1.setText("jButton1");
-
         tableInfomation.setModel(new javax.swing.table.DefaultTableModel(
         ));
         tableInfomation.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -108,21 +105,16 @@ public final class Home extends javax.swing.JPanel {
         kGradientPanel1Layout.setHorizontalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                .addContainerGap(1091, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
-            .addGroup(kGradientPanel1Layout.createSequentialGroup()
                 .addGap(61, 61, 61)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1042, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         kGradientPanel1Layout.setVerticalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
                 .addGap(195, 195, 195)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
-                .addComponent(jButton1))
+                .addContainerGap(239, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -143,7 +135,6 @@ public final class Home extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private com.k33ptoo.components.KGradientPanel kGradientPanel1;

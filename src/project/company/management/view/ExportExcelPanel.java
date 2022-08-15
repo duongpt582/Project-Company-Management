@@ -57,7 +57,7 @@ public class ExportExcelPanel extends javax.swing.JPanel {
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery("SELECT * FROM can_bo");
 
-        int i = 0;
+        int i = 1;
         while (rs.next()) {
             id = rs.getString(2);
             hoTen = rs.getString("ho_ten");
@@ -66,10 +66,10 @@ public class ExportExcelPanel extends javax.swing.JPanel {
             diaChi = rs.getString(6);
             String chucVu = rs.getString(7);
             String soNgayLamViec = rs.getString(8);
-            String luong = rs.getString(9);
+            double luong = rs.getDouble(9);
 
             model.addRow(new Object[]{
-                    i++, id, chucVu, hoTen, ngaySinh, diaChi, gioiTinh, soNgayLamViec, luong
+                    i++, id, chucVu, hoTen, ngaySinh, diaChi, gioiTinh, soNgayLamViec, String.format("%,.2f", luong)
             });
         }
     }
