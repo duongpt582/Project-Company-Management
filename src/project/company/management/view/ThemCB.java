@@ -11,6 +11,7 @@ import java.util.Date;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultButtonModel;
 import javax.swing.JFormattedTextField;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
@@ -35,7 +36,7 @@ public class ThemCB extends javax.swing.JPanel {
     double tienThuong;
     double luong;
     double thuong ;
-    String gioiTinh;
+    String gioiTinh = "";
     java.sql.Date sDate;
     Customer customer = new Customer();
 
@@ -55,9 +56,11 @@ public class ThemCB extends javax.swing.JPanel {
         JDatePanelImpl datePanel = new JDatePanelImpl(model1, System.getProperties());
         JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
         add_date_panel.add(datePicker);
-  
-      
         
+        // nếu để mặc định thì biến sDate sẽ nhận giá trị mặc định trên màn hình.
+        Date selectedDate = (Date) datePicker.getModel().getValue();
+        sDate = convertUtilToSql(selectedDate);
+          
         datePicker.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -164,6 +167,12 @@ public class ThemCB extends javax.swing.JPanel {
         jlbChange.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jlbChange.setText("Thay đổi:");
 
+        txtChange.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtChangeActionPerformed(evt);
+            }
+        });
+
         jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -225,12 +234,13 @@ public class ThemCB extends javax.swing.JPanel {
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
                         .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jlbGender, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(48, 48, 48)
                         .addComponent(jRBNam)
                         .addGap(36, 36, 36)
-                        .addComponent(jRBNu))
+                        .addComponent(jRBNu)
+                        .addGap(70, 70, 70))
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
                         .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -322,6 +332,7 @@ public class ThemCB extends javax.swing.JPanel {
     private void jRBNuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBNuActionPerformed
         // TODO add your handling code here:
         gioiTinh = "Nữ";
+    
     }//GEN-LAST:event_jRBNuActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -361,51 +372,55 @@ public class ThemCB extends javax.swing.JPanel {
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
         int index = jComboBox1.getSelectedIndex();
-        if (index == 1) {
-            chucVu = (String) jComboBox1.getItemAt(index);
-//                    System.out.println("Gia tri: " + chucvu[0]);
-            ten = String.valueOf(txtName.getText());
-            ma = String.valueOf(txtID.getText());
-            diaChi = String.valueOf(txtAddress.getText());
-            ngaySinh = String.valueOf(sDate);
-            soNgayLamViec = Integer.parseInt(txtDay.getText());          
-            luong = soNgayLamViec * 1000000;
-        }
-        if (index == 2) {
-            chucVu = (String) jComboBox1.getItemAt(index);
-//                    System.out.println("Gia tri: " + chucvu[0]);
-            ten = String.valueOf(txtName.getText());
-            ma = String.valueOf(txtID.getText());
-            diaChi = String.valueOf(txtAddress.getText());
-            soNgayLamViec = Integer.parseInt(txtDay.getText());
-            ngaySinh = String.valueOf(sDate);
-            thuong = Double.parseDouble(txtChange.getText());
-            luong = soNgayLamViec * 500000 + thuong;
-        }
-        if (index == 3) {
-            chucVu = (String) jComboBox1.getItemAt(index);
-//                    System.out.println("Gia tri: " + chucvu[0]);
-            ten = String.valueOf(txtName.getText());
-            ma = String.valueOf(txtID.getText());
-            diaChi = String.valueOf(txtAddress.getText());
-            soNgayLamViec = Integer.parseInt(txtDay.getText());
-            ngaySinh = String.valueOf(sDate);
-            thuong = Double.parseDouble(txtChange.getText());
-            
-            luong = soNgayLamViec * 200000 + thuong;
-        }
-        customer.setChuc_vu(chucVu);
-        customer.setTen(ten);
-        customer.setID(ma);
-        customer.setDiaChi(diaChi);
-        customer.setSoNgayLamViec(soNgayLamViec);
-        customer.setLuong(luong);
-        customer.setGioiTinh(gioiTinh);
-
-        list.add(customer); // them vao danh sach canBo
-        showResult();
+        ten = String.valueOf(txtName.getText());
+        ma = String.valueOf(txtID.getText());
+        diaChi = String.valueOf(txtAddress.getText());
+        ngaySinh = String.valueOf(sDate);
         
-        db.insertData1(ma, ten, ngaySinh, gioiTinh, diaChi, chucVu, soNgayLamViec, luong);
+        if (txtDay.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Mời bạn nhập số ngày làm việc bằng số!!");
+        } else if ((index == 2 || index == 3) && txtChange.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Mời bạn nhập thưởng làm việc bằng số!!");
+        } else {
+            if (index == 1) {       
+                chucVu = (String) jComboBox1.getItemAt(index);
+                soNgayLamViec = Integer.parseInt(txtDay.getText());          
+                luong = soNgayLamViec * 1000000;
+            }
+            if (index == 2) {
+                chucVu = (String) jComboBox1.getItemAt(index);
+                soNgayLamViec = Integer.parseInt(txtDay.getText());
+                thuong = Double.parseDouble(txtChange.getText());
+                luong = soNgayLamViec * 500000 + thuong;
+            }
+            if (index == 3) {
+                chucVu = (String) jComboBox1.getItemAt(index);
+                soNgayLamViec = Integer.parseInt(txtDay.getText());
+                thuong = Double.parseDouble(txtChange.getText());
+                luong = soNgayLamViec * 200000 + thuong;
+            }
+        }
+
+        if (ten.equals("") ||
+                ma.equals("") ||
+                diaChi.equals("") || gioiTinh.equals("")) {
+            JOptionPane.showMessageDialog(null, "Mời bạn nhập đầy đủ các trường!!!");
+        } else {
+            customer.setChuc_vu(chucVu);
+            customer.setTen(ten);
+            customer.setID(ma);
+            customer.setNgaySinh(ngaySinh);
+            customer.setDiaChi(diaChi);
+            customer.setSoNgayLamViec(soNgayLamViec);
+            customer.setLuong(luong);
+            customer.setGioiTinh(gioiTinh);
+
+            list.add(customer); // them vao danh sach canBo
+            showResult();
+
+            db.insertData1(ma, ten, ngaySinh, gioiTinh, diaChi, chucVu, soNgayLamViec, luong);
+        }
+        
     }//GEN-LAST:event_addButtonActionPerformed
 
     int i=1;
@@ -413,7 +428,7 @@ public class ThemCB extends javax.swing.JPanel {
         Customer customer = list.get(list.size() - 1);
         model.addRow(new Object[]{
             i++, customer.getID(), customer.getTen(), customer.getNgaySinh(), customer.getGioiTinh(), customer.getDiaChi()
-                , customer.getChuc_vu(),customer.getSoNgayLamViec() ,customer.getLuong()
+                , customer.getChuc_vu(),customer.getSoNgayLamViec() , customer.getLuong()
         });
     }
   
@@ -428,6 +443,10 @@ public class ThemCB extends javax.swing.JPanel {
         txtChange.setVisible(false);
         jlbChange.setVisible(false);
     }//GEN-LAST:event_resetButtonActionPerformed
+
+    private void txtChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtChangeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtChangeActionPerformed
 
     
 

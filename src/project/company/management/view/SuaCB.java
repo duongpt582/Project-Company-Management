@@ -19,6 +19,7 @@ import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
 public class SuaCB extends javax.swing.JPanel {
+    java.sql.Date sDate;
     UtilDateModel model1 = new UtilDateModel();
     JDatePanelImpl datePanel = new JDatePanelImpl(model1, System.getProperties());
     JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
@@ -32,7 +33,20 @@ public class SuaCB extends javax.swing.JPanel {
         btnGr.add(btnNam);
         btnGr.add(btnNu);
         pnDate.add(datePicker);
+        
+        java.util.Date selectedDate = (java.util.Date) datePicker.getModel().getValue();
+        sDate = convertUtilToSql(selectedDate);
+        
+        datePicker.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                java.util.Date selectedDate = (java.util.Date) datePicker.getModel().getValue();
+                sDate = convertUtilToSql(selectedDate);
+                System.out.println(sDate);
+            }
+        });
     }
+
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -435,7 +449,7 @@ public class SuaCB extends javax.swing.JPanel {
                     
                         preparedStatement.setString(8, txtInput.getText());
                         preparedStatement.setString(1, txtHoTen.getText());
-                        preparedStatement.setDate(2, convertUtilToSql(model1.getValue()));
+                        preparedStatement.setDate(2, sDate);
                         if(btnNam.isSelected()){
                             preparedStatement.setString(3, btnNam.getText());
                             gioiTinh = btnNam.getText();
@@ -458,7 +472,7 @@ public class SuaCB extends javax.swing.JPanel {
                         preparedStatement.setDouble(7, luong);
                         preparedStatement.executeUpdate();
                         model.addRow(new Object[]{
-                            txtInput.getText(), txtHoTen.getText(), convertUtilToSql(model1.getValue()), gioiTinh,
+                            txtInput.getText(), txtHoTen.getText(), sDate, gioiTinh,
                             txtDiaChi.getText(), cbChucVu.getSelectedItem().toString(), txtSoNgayLamViec.getText(), String.format("%,.2f", luong)
                         });
                         JOptionPane.showMessageDialog(null, "Sửa thành công!");

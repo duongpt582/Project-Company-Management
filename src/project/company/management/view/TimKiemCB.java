@@ -362,7 +362,7 @@ public class TimKiemCB extends javax.swing.JPanel {
                     
                     
                     model.addRow(new Object[]{
-                        txtInput.getText(), hoTen, ngaySinh, gioiTinh, diaChi, chucVu, soNgayLamViec, luong
+                        txtInput.getText(), hoTen, ngaySinh, gioiTinh, diaChi, chucVu, soNgayLamViec, String.format("%,.2f", luong)
                     });
                 }
                 else{
