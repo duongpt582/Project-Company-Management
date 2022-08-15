@@ -1,6 +1,7 @@
 package project.company.management.model;
 
 import java.io.*;
+import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -148,6 +149,7 @@ public class Customer implements Serializable {
         return (double) soNgay*200000;
     }
 
+  
 
 }
 

@@ -1,16 +1,29 @@
 
 package project.company.management.view;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
 
 public class SuaCB extends javax.swing.JPanel {
-
+    java.sql.Date sDate;
+    UtilDateModel model1 = new UtilDateModel();
+    JDatePanelImpl datePanel = new JDatePanelImpl(model1, System.getProperties());
+    JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
+        
     
     public SuaCB() {
         initComponents();
@@ -19,6 +32,16 @@ public class SuaCB extends javax.swing.JPanel {
         ButtonGroup btnGr = new ButtonGroup();
         btnGr.add(btnNam);
         btnGr.add(btnNu);
+        pnDate.add(datePicker);
+        
+        datePicker.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                java.util.Date selectedDate = (java.util.Date) datePicker.getModel().getValue();
+                sDate = convertUtilToSql(selectedDate);
+                System.out.println(sDate);
+            }
+        });
     }
 
     
@@ -38,7 +61,6 @@ public class SuaCB extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtHoTen = new javax.swing.JTextField();
-        txtNgaySinh = new javax.swing.JTextField();
         txtDiaChi = new javax.swing.JTextField();
         txtSoNgayLamViec = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -49,11 +71,12 @@ public class SuaCB extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         btnUpdate = new com.k33ptoo.components.KButton();
         cbChucVu = new javax.swing.JComboBox<>();
-        btnUpdate1 = new com.k33ptoo.components.KButton();
+        btnRefresh = new com.k33ptoo.components.KButton();
         txtChange = new javax.swing.JTextField();
         jlbChange = new javax.swing.JLabel();
         btnNam = new javax.swing.JRadioButton();
         btnNu = new javax.swing.JRadioButton();
+        pnDate = new javax.swing.JPanel();
 
         jLabel10.setText("jLabel10");
 
@@ -80,7 +103,7 @@ public class SuaCB extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Nhập mã cán bộ cần sửa");
 
@@ -89,27 +112,26 @@ public class SuaCB extends javax.swing.JPanel {
         kGradientPanel1Layout.setHorizontalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(btnFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtInput)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)))
-                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(btnFind, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtInput, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         kGradientPanel1Layout.setVerticalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(67, 67, 67)
+                .addGap(73, 73, 73)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+                .addGap(66, 66, 66)
                 .addComponent(txtInput, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(96, 96, 96)
+                .addGap(98, 98, 98)
                 .addComponent(btnFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(450, Short.MAX_VALUE))
         );
 
         kGradientPanel2.setkEndColor(new java.awt.Color(153, 255, 255));
@@ -134,15 +156,15 @@ public class SuaCB extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblShow);
         if (tblShow.getColumnModel().getColumnCount() > 0) {
             tblShow.getColumnModel().getColumn(0).setPreferredWidth(50);
-            tblShow.getColumnModel().getColumn(7).setPreferredWidth(40);
+            tblShow.getColumnModel().getColumn(3).setPreferredWidth(40);
+            tblShow.getColumnModel().getColumn(6).setPreferredWidth(60);
+            tblShow.getColumnModel().getColumn(7).setPreferredWidth(70);
         }
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 20)); // NOI18N
         jLabel3.setText("Để sửa thông tin của cán bộ, hãy sửa bất kỳ thông tin phía dưới!");
 
         txtHoTen.setPreferredSize(new java.awt.Dimension(175, 40));
-
-        txtNgaySinh.setPreferredSize(new java.awt.Dimension(175, 40));
 
         txtDiaChi.setPreferredSize(new java.awt.Dimension(175, 40));
 
@@ -181,11 +203,11 @@ public class SuaCB extends javax.swing.JPanel {
             }
         });
 
-        btnUpdate1.setText("Làm mới");
-        btnUpdate1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnUpdate1.addActionListener(new java.awt.event.ActionListener() {
+        btnRefresh.setText("Làm mới");
+        btnRefresh.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdate1ActionPerformed(evt);
+                btnRefreshActionPerformed(evt);
             }
         });
 
@@ -205,14 +227,12 @@ public class SuaCB extends javax.swing.JPanel {
         btnNu.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnNu.setText("Nữ");
 
+        pnDate.setLayout(new java.awt.BorderLayout());
+
         javax.swing.GroupLayout kGradientPanel2Layout = new javax.swing.GroupLayout(kGradientPanel2);
         kGradientPanel2.setLayout(kGradientPanel2Layout);
         kGradientPanel2Layout.setHorizontalGroup(
             kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(kGradientPanel2Layout.createSequentialGroup()
                 .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(kGradientPanel2Layout.createSequentialGroup()
@@ -237,28 +257,31 @@ public class SuaCB extends javax.swing.JPanel {
                                     .addGroup(kGradientPanel2Layout.createSequentialGroup()
                                         .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel6)
-                                            .addComponent(txtNgaySinh, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                                             .addComponent(jLabel9)
-                                            .addComponent(cbChucVu, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(pnDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(cbChucVu, 0, 197, Short.MAX_VALUE)
                                             .addComponent(txtChange, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(84, 84, 84)
+                                        .addGap(66, 66, 66)
                                         .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel11)
+                                            .addComponent(btnNam)
                                             .addComponent(jLabel7)
-                                            .addComponent(txtSoNgayLamViec, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(kGradientPanel2Layout.createSequentialGroup()
-                                                .addComponent(btnNam)
-                                                .addGap(65, 65, 65)
-                                                .addComponent(btnNu))))))))
+                                            .addComponent(jLabel11)
+                                            .addComponent(txtSoNgayLamViec, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                     .addGroup(kGradientPanel2Layout.createSequentialGroup()
                         .addGap(162, 162, 162)
                         .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(194, 194, 194)
-                        .addComponent(btnUpdate1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(kGradientPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 861, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnNu)
+                    .addComponent(jLabel3))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         kGradientPanel2Layout.setVerticalGroup(
             kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,11 +298,12 @@ public class SuaCB extends javax.swing.JPanel {
                     .addComponent(jLabel6)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNam)
-                    .addComponent(btnNu))
+                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnDate, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnNam)
+                        .addComponent(btnNu)))
                 .addGap(41, 41, 41)
                 .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -294,10 +318,10 @@ public class SuaCB extends javax.swing.JPanel {
                 .addComponent(jlbChange)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtChange, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUpdate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(90, 90, 90))
         );
 
@@ -306,14 +330,14 @@ public class SuaCB extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(kGradientPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(kGradientPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(kGradientPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(kGradientPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(kGradientPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -321,13 +345,11 @@ public class SuaCB extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -352,7 +374,7 @@ public class SuaCB extends javax.swing.JPanel {
                     txtHoTen.setText(hoTen);
                     
                     String ngaySinh = String.valueOf(rs.getDate("ngay_sinh"));
-                    txtNgaySinh.setText(ngaySinh);
+                    model1.setValue(rs.getDate("ngay_sinh"));
                     
                     String gioiTinh = rs.getString("Gioi_tinh");
                     if(gioiTinh.equals("Nam")) btnNam.doClick();
@@ -369,9 +391,13 @@ public class SuaCB extends javax.swing.JPanel {
                     
                     double luong = rs.getDouble("Luong");
                     
+                    if(chucVu.equals("Trưởng Phòng"))
+                        txtChange.setText(String.valueOf(luong - soNgayLamViec * 500000));
+                    else if(chucVu.equals("Nhân Viên"))
+                        txtChange.setText(String.valueOf(luong - soNgayLamViec * 200000));
                     
                     model.addRow(new Object[]{
-                        txtInput.getText(), hoTen, ngaySinh, gioiTinh, diaChi, chucVu, soNgayLamViec, luong
+                        txtInput.getText(), hoTen, ngaySinh, gioiTinh, diaChi, chucVu, soNgayLamViec, String.format("%,.2f", luong)
                     });
                     txtInput.setEditable(false);
                 }
@@ -385,7 +411,6 @@ public class SuaCB extends javax.swing.JPanel {
             Logger.getLogger(SuaCB.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        txtNgaySinh.setEditable(false);
     }//GEN-LAST:event_btnFindActionPerformed
 
     private void txtInputKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtInputKeyPressed
@@ -408,7 +433,6 @@ public class SuaCB extends javax.swing.JPanel {
                         + "dia_chi=?, chuc_vu=?, so_ngay_lam_viec=?, luong=? WHERE ID=?");
 
                 if(txtHoTen.getText().equals("") ||
-                   txtNgaySinh.getText().equals("") || 
                    txtDiaChi.getText().equals("") || 
                    cbChucVu.getSelectedIndex() == 0 || 
                    txtSoNgayLamViec.getText().equals("") ||
@@ -422,7 +446,7 @@ public class SuaCB extends javax.swing.JPanel {
                     
                         preparedStatement.setString(8, txtInput.getText());
                         preparedStatement.setString(1, txtHoTen.getText());
-                        preparedStatement.setString(2, txtNgaySinh.getText());
+                        preparedStatement.setDate(2, sDate);
                         if(btnNam.isSelected()){
                             preparedStatement.setString(3, btnNam.getText());
                             gioiTinh = btnNam.getText();
@@ -445,9 +469,10 @@ public class SuaCB extends javax.swing.JPanel {
                         preparedStatement.setDouble(7, luong);
                         preparedStatement.executeUpdate();
                         model.addRow(new Object[]{
-                            txtInput.getText(), txtHoTen.getText(), txtNgaySinh.getText(), gioiTinh,
-                            txtDiaChi.getText(), cbChucVu.getSelectedItem().toString(), txtSoNgayLamViec.getText(), luong
-                        }); 
+                            txtInput.getText(), txtHoTen.getText(), sDate, gioiTinh,
+                            txtDiaChi.getText(), cbChucVu.getSelectedItem().toString(), txtSoNgayLamViec.getText(), String.format("%,.2f", luong)
+                        });
+                        JOptionPane.showMessageDialog(null, "Sửa thành công!");
                    }
             } catch (SQLException ex) {
                 Logger.getLogger(SuaCB.class.getName()).log(Level.SEVERE, null, ex);
@@ -487,12 +512,12 @@ public class SuaCB extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_cbChucVuActionPerformed
 
-    private void btnUpdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdate1ActionPerformed
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
         cbChucVu.setSelectedIndex(0);
         txtHoTen.setText("");
         txtSoNgayLamViec.setText("");
-        txtNgaySinh.setText("");
+        datePicker.getModel().setValue(null);
         txtInput.setText("");
         txtDiaChi.setText("");
         ButtonGroup btnGr = new ButtonGroup();
@@ -500,19 +525,45 @@ public class SuaCB extends javax.swing.JPanel {
         btnGr.add(btnNu);
         btnGr.clearSelection();
         txtInput.setEditable(true);
-    }//GEN-LAST:event_btnUpdate1ActionPerformed
+    }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void jlbChangeComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jlbChangeComponentHidden
         // TODO add your handling code here:
     }//GEN-LAST:event_jlbChangeComponentHidden
 
+    private static java.sql.Date convertUtilToSql(java.util.Date uDate) {
+        java.sql.Date sDate = new java.sql.Date(uDate.getTime());
+        return sDate;
+    }
+    
+    public class DateLabelFormatter extends JFormattedTextField.AbstractFormatter {
+
+        private String datePattern = "yyyy-MM-dd";
+        private SimpleDateFormat dateFormatter = new SimpleDateFormat(datePattern);
+
+        @Override
+        public Object stringToValue(String text) throws ParseException {
+            return dateFormatter.parseObject(text);
+        }
+
+        @Override
+        public String valueToString(Object value) throws ParseException {
+            if (value != null) {
+                Calendar cal = (Calendar) value;
+                return dateFormatter.format(cal.getTime());
+            }
+
+            return "";
+        }
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.k33ptoo.components.KButton btnFind;
     private javax.swing.JRadioButton btnNam;
     private javax.swing.JRadioButton btnNu;
+    private com.k33ptoo.components.KButton btnRefresh;
     private com.k33ptoo.components.KButton btnUpdate;
-    private com.k33ptoo.components.KButton btnUpdate1;
     private javax.swing.JComboBox<String> cbChucVu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -529,12 +580,12 @@ public class SuaCB extends javax.swing.JPanel {
     private javax.swing.JLabel jlbChange;
     private com.k33ptoo.components.KGradientPanel kGradientPanel1;
     private com.k33ptoo.components.KGradientPanel kGradientPanel2;
+    private javax.swing.JPanel pnDate;
     private javax.swing.JTable tblShow;
     private javax.swing.JTextField txtChange;
     private javax.swing.JTextField txtDiaChi;
     private javax.swing.JTextField txtHoTen;
     private javax.swing.JTextField txtInput;
-    private javax.swing.JTextField txtNgaySinh;
     private javax.swing.JTextField txtSoNgayLamViec;
     // End of variables declaration//GEN-END:variables
 }

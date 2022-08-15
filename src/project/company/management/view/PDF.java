@@ -422,20 +422,20 @@ public class PDF extends javax.swing.JPanel {
             }
             
             int a = JOptionPane.showConfirmDialog(null, "Do you want to print customer detail","Select",JOptionPane.YES_NO_OPTION);
-            if (a==0) {
-                try 
-                {
-                    if(!new File(saveFile.toString()).exists()) {
-                        System.err.println("File is not Exists");
-                    } else {
-                        Process p = Runtime.getRuntime().exec("File"+num+".pdf");// open a new notepad
-                    }
-                } catch (IOException e) 
-                {
-                    JOptionPane.showMessageDialog(null, e);
-                }
-
-            }
+//            if (a==0) {
+//                try 
+//                {
+//                    if(!new File(saveFile.toString()).exists()) {
+//                        System.err.println("File is not Exists");
+//                    } else {
+//                        Process p = Runtime.getRuntime().exec("File"+num+".pdf");// open a new notepad
+//                    }
+//                } catch (IOException e) 
+//                {
+//                    JOptionPane.showMessageDialog(null, e);
+//                }
+//
+//            }
             
         }catch (DocumentException | FileNotFoundException e) {
             e.printStackTrace();
