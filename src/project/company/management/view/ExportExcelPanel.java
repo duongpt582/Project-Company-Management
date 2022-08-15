@@ -57,7 +57,7 @@ public class ExportExcelPanel extends javax.swing.JPanel {
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery("SELECT * FROM can_bo");
 
-        int i = 0;
+        int i = 1;
         while (rs.next()) {
             id = rs.getString(2);
             hoTen = rs.getString("ho_ten");
